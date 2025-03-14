@@ -16,6 +16,7 @@ public class MyGraph extends Graph {
 		super(Stream.of(MyNodeLabels.values()).map(z->z.toString()).collect(Collectors.toList()));    
 	}
 	
+	
 	/**
 	 * @return A new object of MyNodeBuilder
 	 */

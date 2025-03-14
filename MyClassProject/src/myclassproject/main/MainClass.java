@@ -2,8 +2,10 @@ package myclassproject.main;
 
 import com.storygraph.Story;
 
+import myclassproject.mystorygraph.MyGraph;
 import myclassproject.questexample.QuestGraph;
 import myclassproject.testgraph.TestGraph;
+
 public class MainClass {
 
 	//This is the start of your program
