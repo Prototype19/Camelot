@@ -22,13 +22,10 @@ public final class MyStoryEntities {
 	
 	// Daron
 	public static final Characters player = new Characters("Player", BodyTypes.H, Clothing.King, HairStyle.Spiky, Colors.Black, 6);
-	public static final Characters peasant1 = new Characters("Peasant John", BodyTypes.F, Clothing.Peasant, HairStyle.Bald, Colors.Black, 4);
-	public static final Place cottage = new Place("Home", PlaceTypes.Cottage);
-	public static final Place town = new Place("Town", PlaceTypes.City);
-	public static final Item sword = new Item("Sword", ItemTypes.Sword);
-	public static final Furniture cottageDoor = new Furniture(cottage, FurnitureTypes.Door);
-	public static final Furniture table = new Furniture(cottage, FurnitureTypes.Table);
-	public static final Furniture chair = new Furniture(cottage, FurnitureTypes.Chair);
-	public static final Furniture cityDoor = new Furniture(town, FurnitureTypes.RedHouseDoor);
-	public static final Furniture cityExit = new Furniture(town, FurnitureTypes.NorthEnd);
+	public static final Characters peasantJohn = new Characters("Peasant John", BodyTypes.F, Clothing.Peasant, HairStyle.Bald, Colors.Brown, 4);
+	public static final Characters noble1 = new Characters("Noble", BodyTypes.D, Clothing.Noble, HairStyle.Long, Colors.Blonde, 5);
+	public static final Place bedroom = new Place("Home", PlaceTypes.CastleBedroom);
+	public static final Place greatHall = new Place("Hall", PlaceTypes.GreatHall);
+	public static final Furniture bedroomDoor = new Furniture(bedroom, FurnitureTypes.Door);
+
 }

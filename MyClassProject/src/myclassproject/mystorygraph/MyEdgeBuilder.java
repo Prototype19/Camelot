@@ -1,10 +1,20 @@
 package myclassproject.mystorygraph;
 
+import static myclassproject.mystorygraph.MyStoryEntities.*;
+
+
 import java.util.List;
 
+import com.playerInput.*;
+import com.playerInput.PlayerInteraction.Icons;
 import com.storygraph.BuilderMethod;
-import com.storygraph.Node;
+import com.storygraph.Edge;
 import com.storygraph.NodeBuilder;
+import com.storygraph.Node;
+
+import myclassproject.mystorygraph.MyChoiceLabels;
+
+
 
 public class MyEdgeBuilder extends NodeBuilder {
 	/**
@@ -21,12 +31,33 @@ public class MyEdgeBuilder extends NodeBuilder {
 	 * The method should add the edges of the node one by one. 
 	 * These methods must have a BuilderMethod annotation.
 	 */
+	
+	// Daron
 	@BuilderMethod
 	public void rootEdges() {
-		//Example:
-		//var root = get(NodeLabels.root.toString());
-		//var choice = new MenuChoice(MenuChoice.Options.Start);
-		//var nextNode = get(NodeLabels.atCottage.toString());
-		//root.add(new Edge(choice, nextNode));
+
+		var root = get(MyNodeLabels.root.toString());
+		var startChoice = new MenuChoice(MenuChoice.Options.Start);
+		//var creditsChoice = new MenuChoice(MenuChoice.Options.Credits);
+		var atBedroomNode = get(MyNodeLabels.atBedroom.toString());
+		root.add(new Edge(startChoice, atBedroomNode));
+		//root.add(new Edge(creditsChoice, nextNode));
+		
+	}
+	@BuilderMethod
+	public void atBedroomEdges() {
+		var atBedroomNode = get(MyNodeLabels.atBedroom.toString());
+		var leave = new PlayerInteraction(MyChoiceLabels.LeaveBedroom.toString(), bedroomDoor, Icons.exit, "Go to Hall");
+		var chooseAudienceNode = get(MyNodeLabels.ChooseAudience.toString());
+		atBedroomNode.add(new Edge(leave, chooseAudienceNode));
+	}
+	
+	@BuilderMethod
+	public void ChooseAudienceEdges() {
+		var chooseAudienceNode = get(MyNodeLabels.ChooseAudience.toString());
+		var chooseJohn = new PlayerInteraction(MyChoiceLabels.TalkToJohn.toString(), peasantJohn, Icons.talk,
+				"Talk to the Peasant John.");
+		var JohnDialogNode = get(MyNodeLabels.JohnDialog.toString());
+		chooseAudienceNode.add(new Edge(chooseJohn, JohnDialogNode));
 	}
 }
