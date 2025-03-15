@@ -41,6 +41,16 @@ public class MyNodeBuilder extends NodeBuilder {
 		.add(new ShowMenu());
 	}
 	
+	public void atBedroomActions() {
+		var atBedroom = get(MyNodeLabels.atBedroom.toString());
+		
+		atBedroom
+		.add(new HideMenu())
+		.add(new EnableInput());
+	}
+	
+	
+	
 
 
 }
