@@ -47,9 +47,9 @@ public class MyEdgeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void atBedroomEdges() {
 		var atBedroomNode = get(MyNodeLabels.atBedroom.toString());
-		var leave = new PlayerInteraction(MyChoiceLabels.LeaveBedroom.toString(), bedroomDoor, Icons.exit, "Go to Throne Room");
+		var leavebedroom = new PlayerInteraction(MyChoiceLabels.LeaveBedroom.toString(), bedroomDoor, Icons.exit, "Go to Throne Room");
 		var chooseAudienceNode = get(MyNodeLabels.ChooseAudience.toString());
-		atBedroomNode.add(new Edge(leave, chooseAudienceNode));
+		atBedroomNode.add(new Edge(leavebedroom, chooseAudienceNode));
 	}
 	
 	@BuilderMethod
@@ -64,6 +64,18 @@ public class MyEdgeBuilder extends NodeBuilder {
 		chooseAudienceNode.add(new Edge(chooseJohn, JohnDialogNode));
 		chooseAudienceNode.add(new Edge(chooseNobles, NobleQuarrelDialog));
 	}
+	
+	@BuilderMethod
+	public void JohnDialogEdges() { 
+		var johnDialogNode = get(MyNodeLabels.JohnDialog.toString());
+		var acceptJohn = new DialogChoice("I will!");
+		var rejectJohn = new DialogChoice("I refuse!!");
+		var johnDialogAcceptNode = get(MyNodeLabels.JohnDialogAccept.toString());
+		var johnDialogRejectNode = get(MyNodeLabels.JohnDialogReject.toString());
+		johnDialogNode.add(new Edge(acceptJohn,johnDialogAcceptNode));
+		johnDialogNode.add(new Edge(rejectJohn, johnDialogRejectNode));
+	}
+	
 	
 	
 }
