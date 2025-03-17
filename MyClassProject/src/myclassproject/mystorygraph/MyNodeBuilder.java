@@ -107,7 +107,31 @@ public class MyNodeBuilder extends NodeBuilder {
 				List.of("The village's rent will be split equally between you two.", "I will take the village for myself!")));
 	}
 	
-	
+//Kyler
+	@BuilderMethod
+	public void johnAftermathAcceptActions() {
+		var johnAftermathAccept = get(MyNodeLabels.JohnAftermathAccept.toString());
+
+		johnAftermathAccept
+			.add(new ShowNotification("The peasants cheer for you and your generous gesture!"))
+			.add(new AdjustReputation(player, peasantJohn, 10)) 
+			.add(new ContinueStory());
+			}
+	@BuilderMethod
+	public void johnAftermathDeclineActions() {
+		var johnAftermathDecline = get(MyNodeLabels.JohnAftermathDecline.toString());
+
+		johnAftermathDecline
+			.add(new ShowNotification("The peasants are disappointed."))
+			.add(new AdjustReputation(player, peasantJohn, -10))
+			.add(new ContinueStory());
+	}
+
+	@BuilderMethod
+	public void 
+
+		
+			
 	
 	
 
