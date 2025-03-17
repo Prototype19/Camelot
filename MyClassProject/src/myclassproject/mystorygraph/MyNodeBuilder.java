@@ -70,6 +70,17 @@ public class MyNodeBuilder extends NodeBuilder {
 		.add(new DialogSequence(player, peasantJohn, List.of("My lord, my region's grain storehouse is beginning to fall apart. I beg of you on behalf of my fellow commoners, please fund the construction of a new storehouse. Otherwise we risk all of our grain to rot and starving in the winter."),
 				List.of("I will!", "I refuse!")));
 	}
+	
+	@BuilderMethod
+	public void nobleQuarrelDialogActions() {
+		var nobleQuarrelDialog = get(MyNodeLabels.NobleQuarrelDialog.toString());
+		
+		nobleQuarrelDialog
+		.add(new DialogSequence(player, peasantJohn, List.of("My liege, me and my peer have been quarreling over the borders of our newly inherited lands. Particularly there's one village whose ownership is 'vague'. Me and the fellow noble petition for you to resolve this issue."),
+				List.of("The village's rent will be split equally between you two.", "I will take the village for myself!")));
+	}
+	
+	//Kyler
 	@BuilderMethod
 	public void johnDialogAcceptActions() {
 		var johnDialogAccept = get(MyNodeLabels.JohnDialogAccept.toString());
@@ -82,6 +93,9 @@ public class MyNodeBuilder extends NodeBuilder {
 		.add(new Wait(3))
 		.add(new SetCameraFocus(player))
 		.add(new SetCameraMode(Mode.follow));
+		//.add(new ShowNotification("The peasants cheer for you and your generous gesture!"))
+		//.add(new AdjustReputation(player, peasantJohn, 10)) 
+		//.add(new ContinueStory());
 		
 	}
 	
@@ -97,38 +111,11 @@ public class MyNodeBuilder extends NodeBuilder {
 		.add(new Wait(3))
 		.add(new SetCameraFocus(player))
 		.add(new SetCameraMode(Mode.follow));
-	}
-	@BuilderMethod
-	public void nobleQuarrelDialogActions() {
-		var nobleQuarrelDialog = get(MyNodeLabels.NobleQuarrelDialog.toString());
-		
-		nobleQuarrelDialog
-		.add(new DialogSequence(player, peasantJohn, List.of("My liege, me and my peer have been quarreling over the borders of our newly inherited lands. Particularly there's one village whose ownership is 'vague'. Me and the fellow noble petition for you to resolve this issue."),
-				List.of("The village's rent will be split equally between you two.", "I will take the village for myself!")));
-	}
-	
-//Kyler
-	@BuilderMethod
-	public void johnAftermathAcceptActions() {
-		var johnAftermathAccept = get(MyNodeLabels.JohnAftermathAccept.toString());
-
-		johnAftermathAccept
-			.add(new ShowNotification("The peasants cheer for you and your generous gesture!"))
-			.add(new AdjustReputation(player, peasantJohn, 10)) 
-			.add(new ContinueStory());
-			}
-	@BuilderMethod
-	public void johnAftermathDeclineActions() {
-		var johnAftermathDecline = get(MyNodeLabels.JohnAftermathDecline.toString());
-
-		johnAftermathDecline
-			.add(new ShowNotification("The peasants are disappointed."))
-			.add(new AdjustReputation(player, peasantJohn, -10))
-			.add(new ContinueStory());
+		//.add(new ShowNotification("The peasants are disappointed."))
+		//.add(new AdjustReputation(player, peasantJohn, -10))
+		//.add(new ContinueStory());
 	}
 
-	@BuilderMethod
-	public void 
 
 		
 			
