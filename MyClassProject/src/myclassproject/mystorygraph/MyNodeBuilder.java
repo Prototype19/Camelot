@@ -34,7 +34,7 @@ public class MyNodeBuilder extends NodeBuilder {
 		var root = get(MyNodeLabels.root.toString());
 
 		root
-		.add(new CreateAll(List.of(bedroom, greatHall, peasantJohn, noble1)))
+		.add(new CreateAll(List.of(bedroom, greatHall)))
 		.add(new CreateCharacterSequence(peasantJohn))
 		.add(new SetPosition(peasantJohn, greatHall, "LeftFoyer"))
 		.add(new CreateCharacterSequence(noble1))
@@ -67,7 +67,7 @@ public class MyNodeBuilder extends NodeBuilder {
 		var johnDialong = get(MyNodeLabels.JohnDialog.toString());
 		
 		johnDialong
-		.add(new DialogSequence(player, peasantJohn, List.of("My lord, my region's grain storehouse is beginning to fall apart. I beg of you on behalf of my fellow commoners, please fund the construction of a new storehouse. Otherwise we risk all of our grain to rot and starving in the winter."),
+		.add(new DialogSequence(player, peasantJohn, List.of("My lord! my region's grain storehouse is beginning to fall apart. I beg of you on behalf of my fellow commoners, please fund the construction of a new storehouse. Otherwise we risk all of our grain to rot and starving in the winter."),
 				List.of("I will!", "I refuse!")));
 	}
 	

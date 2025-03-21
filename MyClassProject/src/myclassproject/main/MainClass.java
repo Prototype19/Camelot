@@ -3,8 +3,10 @@ package myclassproject.main;
 import com.storygraph.Story;
 
 import myclassproject.mystorygraph.MyGraph;
-//import myclassproject.questexample.QuestGraph;
+import myclassproject.mystorygraph.MyNodeLabels;
+import myclassproject.questexample.QuestGraph;
 //import myclassproject.testgraph.TestGraph;
+import myclassproject.mystorygraph.MyNodeLabels.*;
 
 public class MainClass {
 

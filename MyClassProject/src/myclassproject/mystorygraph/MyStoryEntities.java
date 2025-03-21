@@ -27,6 +27,6 @@ public final class MyStoryEntities {
 	public static final Place bedroom = new Place("Home", PlaceTypes.CastleBedroom);
 	public static final Place greatHall = new Place("Hall", PlaceTypes.GreatHall);
 	public static final Furniture bedroomDoor = new Furniture(bedroom, FurnitureTypes.Door);
-	public static final Furniture greatHallDoor = new Furniture(greatHall, FurnitureTypes.Door);
+	public static final Furniture greatHallDoor = new Furniture(greatHall, FurnitureTypes.Gate);
 
 }
