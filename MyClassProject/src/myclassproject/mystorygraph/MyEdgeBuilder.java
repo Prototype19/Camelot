@@ -57,7 +57,7 @@ public class MyEdgeBuilder extends NodeBuilder {
 		var chooseAudienceNode = get(MyNodeLabels.ChooseAudience.toString());
 		var chooseJohn = new PlayerInteraction(MyChoiceLabels.TalkToJohn.toString(), peasantJohn, Icons.talk,
 				"Talk to the Peasant John.");
-		var chooseNobles = new PlayerInteraction(MyChoiceLabels.TalkToNobles.toString(), peasantJohn, Icons.talk,
+		var chooseNobles = new PlayerInteraction(MyChoiceLabels.TalkToNobles.toString(), noble1, Icons.talk,
 				"Talk to the Quarelling Nobles.");
 		var JohnDialogNode = get(MyNodeLabels.JohnDialog.toString());
 		var NobleQuarrelDialog = get(MyNodeLabels.NobleQuarrelDialog.toString());
