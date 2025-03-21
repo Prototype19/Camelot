@@ -12,7 +12,6 @@ import com.storygraph.Edge;
 import com.storygraph.NodeBuilder;
 import com.storygraph.Node;
 
-import myclassproject.mystorygraph.MyChoiceLabels;
 
 
 
