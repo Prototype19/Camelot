@@ -38,10 +38,17 @@ public class MyEdgeBuilder extends NodeBuilder {
 		var root = get(MyNodeLabels.root.toString());
 		var startChoice = new MenuChoice(MenuChoice.Options.Start);
 		//var creditsChoice = new MenuChoice(MenuChoice.Options.Credits);
-		var atBedroomNode = get(MyNodeLabels.atBedroom.toString());
-		root.add(new Edge(startChoice, atBedroomNode));
+		var intro = get(MyNodeLabels.intro.toString());
+		root.add(new Edge(startChoice, intro));
 		//root.add(new Edge(creditsChoice, nextNode));
 		
+	}
+	@BuilderMethod
+	public void introEdges() {
+		var intro = get(MyNodeLabels.intro.toString());
+		var closeNarrationChoice = new CloseNarrationChoice();
+		var atBedroomNode = get(MyNodeLabels.atBedroom.toString());
+		intro.add(new Edge(closeNarrationChoice,atBedroomNode));
 	}
 	@BuilderMethod
 	public void atBedroomEdges() {

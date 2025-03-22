@@ -12,6 +12,7 @@ import com.actions.*;
 import com.actions.utility.*;
 
 
+
 import static myclassproject.mystorygraph.MyStoryEntities.*;
 
 
@@ -34,6 +35,7 @@ public class MyNodeBuilder extends NodeBuilder {
 		var root = get(MyNodeLabels.root.toString());
 
 		root
+		
 		.add(new CreateAll(List.of(bedroom, greatHall)))
 		.add(new CreateCharacterSequence(peasantJohn))
 		.add(new SetPosition(peasantJohn, greatHall, "LeftFoyer"))
@@ -45,10 +47,20 @@ public class MyNodeBuilder extends NodeBuilder {
 		.add(new ShowMenu());
 	}
 	@BuilderMethod
+	public void introAction() {
+		var intro = get(MyNodeLabels.intro.toString());
+		
+		intro
+		.add(new SetNarration("Your father and king has passed away under susipious cirumstances. Now you the first born prince will inherit the vacant throne. As King responbility will fall on you to lead your subjects house and the whole of the Kingdom of Forgia to prosperity. This will not be an easy feat by any means. Just beyond the horizon famines raiders and optimistic nobles threaten the longevity of your rein. Fear not! While unexperienced your will and stewdness should be enough for you to be prepared for whatever challenge you face. Long live the King!"))
+		.add(new ShowNarration());
+		
+	}
+	@BuilderMethod
 	public void atBedroomActions() {
 		var atBedroom = get(MyNodeLabels.atBedroom.toString());
 		
 		atBedroom
+		.add(new HideNarration())
 		.add(new HideMenu())
 		.add(new EnableInput());
 	}
@@ -90,7 +102,9 @@ public class MyNodeBuilder extends NodeBuilder {
 		.add(new HideDialog())
 		.add(new SetNarration("The peasants now see you as generious"))
 		.add(new ShowNarration())
-		.add(new Dance(peasantJohn));
+		.add(new Dance(peasantJohn))
+		.add(new Wait(3))
+		.add(new HideNarration());
 		//.add(new AdjustReputation(10));
 		
 	}
@@ -103,7 +117,9 @@ public class MyNodeBuilder extends NodeBuilder {
 		.add(new SetDialog("You can't..."))
 		.add(new HideDialog())
 		.add(new SetNarration("The peasants now resent you"))
-		.add(new ShowNarration());
+		.add(new ShowNarration())
+		.add(new Wait(3))
+		.add(new HideNarration());
 		//.add(new PlaySound(Cry1, peasantJohn,true))
 		//.add(new AdjustReputation(-10))
 
