@@ -82,13 +82,12 @@ public class MyNodeBuilder extends NodeBuilder {
 		.add(new DialogSequence(player, peasantJohn, List.of("My lord! my region's grain storehouse is beginning to fall apart. I beg of you on behalf of my fellow commoners, please fund the construction of a new storehouse. Otherwise we risk all of our grain to rot and starving in the winter."),
 				List.of("I will!", "I refuse!")));
 	}
-	
 	@BuilderMethod
 	public void nobleQuarrelDialogActions() {
 		var nobleQuarrelDialog = get(MyNodeLabels.NobleQuarrelDialog.toString());
 		
 		nobleQuarrelDialog
-		.add(new DialogSequence(player, peasantJohn, List.of("My liege! me and my peer have been quarreling over the borders of our newly inherited lands. Particularly there's one village whose ownership is 'vague'. Me and the fellow noble petition for you to resolve this issue."),
+		.add(new DialogSequence(player, noble1, List.of("My liege! me and my peer have been quarreling over the borders of our newly inherited lands. Particularly there's one village whose ownership is 'vague'. Me and the fellow noble petition for you to resolve this issue."),
 				List.of("The village's rent will be split equally between you two.", "I will take the village for myself!")));
 	}
 	
@@ -98,13 +97,10 @@ public class MyNodeBuilder extends NodeBuilder {
 		var johnDialogAccept = get(MyNodeLabels.JohnDialogAccept.toString());
 		
 		johnDialogAccept
-		.add(new SetDialog("May god bless your soul."))
 		.add(new HideDialog())
-		.add(new SetNarration("The peasants now see you as generious"))
-		.add(new ShowNarration())
-		.add(new Dance(peasantJohn))
-		.add(new Wait(3))
-		.add(new HideNarration());
+		.add(new NarrationSequence("The peasants now see you as generious"))
+		.add(new Dance(peasantJohn));
+		
 		//.add(new AdjustReputation(10));
 		
 	}
@@ -114,16 +110,55 @@ public class MyNodeBuilder extends NodeBuilder {
 		var johnDialogReject = get(MyNodeLabels.JohnDialogReject.toString());
 		
 		johnDialogReject
-		.add(new SetDialog("You can't..."))
 		.add(new HideDialog())
-		.add(new SetNarration("The peasants now resent you"))
-		.add(new ShowNarration())
-		.add(new Wait(3))
-		.add(new HideNarration());
-		//.add(new PlaySound(Cry1, peasantJohn,true))
-		//.add(new AdjustReputation(-10))
+		.add(new NarrationSequence("The peasants now resent you"));
+
 
 	}
+	//Daron 
+	@BuilderMethod
+	public void nobleQuarrelDialogSolvedActions() {
+		var NobleQuarrelSolved = get(MyNodeLabels.NobleQuarrelSolved.toString());
+		
+		NobleQuarrelSolved
+		.add(new HideDialog())
+		.add(new NarrationSequence("The nobles are satfied with your decision"))
+		.add(new Dance(noble1));
+
+		
+	}
+	@BuilderMethod
+	public void nobleQuarrelDialogTryantActions() {
+		var NobleQuarrelSolved = get(MyNodeLabels.NobleQuarrelSolved.toString());
+		
+		NobleQuarrelSolved
+		.add(new HideDialog())
+		.add(new NarrationSequence("The nobles are satfied with your decision"));
+	}
+	
+	public void chooseAudiencePostJohnAcceptActions() {
+		var chooseAudiencePostJohnAccept = get(MyNodeLabels.ChooseAudiencePostJohnAccept.toString());
+		chooseAudiencePostJohnAccept
+		.add(new HideNarration());
+	}
+
+	public void chooseAudiencePostJohnRejectActions() {
+		var chooseAudiencePostJohnReject = get(MyNodeLabels.ChooseAudiencePostJohnReject.toString());
+		chooseAudiencePostJohnReject
+		.add(new HideNarration());
+	}
+	public void chooseAudiencePostNobleSolvedActions() {
+		var chooseAudiencePostNobleSolved = get(MyNodeLabels.ChooseAudiencePostNobleSolved.toString());
+		chooseAudiencePostNobleSolved
+		.add(new HideNarration());
+	}
+	public void chooseAudiencePostNobleTyrant() {
+		var chooseAudiencePostNobleTyrant = get(MyNodeLabels.ChooseAudiencePostNobleTyrant.toString());
+		chooseAudiencePostNobleTyrant
+		.add(new HideNarration());
+	}
+	
+	
 
 
 		
