@@ -57,7 +57,6 @@ public class MyEdgeBuilder extends NodeBuilder {
 		var chooseAudienceNode = get(MyNodeLabels.ChooseAudience.toString());
 		atBedroomNode.add(new Edge(leavebedroom, chooseAudienceNode));
 	}
-	
 	@BuilderMethod
 	public void ChooseAudienceEdges() {
 		var chooseAudienceNode = get(MyNodeLabels.ChooseAudience.toString());
@@ -81,6 +80,7 @@ public class MyEdgeBuilder extends NodeBuilder {
 		johnDialogNode.add(new Edge(acceptJohn,johnDialogAcceptNode));
 		johnDialogNode.add(new Edge(rejectJohn, johnDialogRejectNode));
 	}
+
 	@BuilderMethod
 	public void JohnDialogAcceptEdges() {
 		var johnDialogAcceptNode = get(MyNodeLabels.JohnDialogAccept.toString());
@@ -89,30 +89,131 @@ public class MyEdgeBuilder extends NodeBuilder {
 		johnDialogAcceptNode.add(new Edge(closeNarrationChoice,chooseAudiencePostJohnAcceptNode));
 	}
 	@BuilderMethod
+	public void ChooseAudiencePostJohnAcceptEdges() {
+		var chooseAudiencePostJohnAcceptNode = get(MyNodeLabels.ChooseAudiencePostJohnAccept.toString());
+		var chooseNobles = new PlayerInteraction(MyChoiceLabels.TalkToNobles.toString(), noble1, Icons.talk,
+				"Talk to the Quarelling Nobles.");
+		var NobleQuarrelDialog = get(MyNodeLabels.NobleQuarrelPostJohnAccept.toString());
+		chooseAudiencePostJohnAcceptNode.add(new Edge(chooseNobles, NobleQuarrelDialog));
+	}
+	@BuilderMethod
+	public void NobleQuarrelDialogPostJohnAcceptEdges() { 
+		var NobleQuarrelDialogNode = get(MyNodeLabels.NobleQuarrelPostJohnAccept.toString());
+		var solutionChoice = new DialogChoice("The village's rent will be split equally between you two.");
+		var tyrantChoice = new DialogChoice("I will take the village for myself!");
+		var NobleQuarrelSolvedNode = get(MyNodeLabels.NobleQuarrelSolvedPostJohnAccept.toString());
+		var NobleQuarrelTyrantNode = get(MyNodeLabels.NobleQuarrelTyrantPostJohnAccept.toString());
+		NobleQuarrelDialogNode.add(new Edge(solutionChoice,NobleQuarrelSolvedNode));
+		NobleQuarrelDialogNode.add(new Edge(tyrantChoice, NobleQuarrelTyrantNode));
+	}
+	@BuilderMethod
+	public void NobleQuarrelSolvedPostJohnAcceptEdges() { 
+		var nobleQuarrelSolvedNode = get(MyNodeLabels.NobleQuarrelSolvedPostJohnAccept.toString());
+		var closeNarrationChoice = new CloseNarrationChoice();
+		var SuccessfulReinNode = get(MyNodeLabels.SuccessfulRein.toString());
+		nobleQuarrelSolvedNode.add(new Edge(closeNarrationChoice,SuccessfulReinNode));
+	}
+	@BuilderMethod
+	public void NobleQuarrelTyrantPostJohnAcceptEdges() { 
+		var nobleQuarrelSolvedNode = get(MyNodeLabels.NobleQuarrelTyrantPostJohnAccept.toString());
+		var closeNarrationChoice = new CloseNarrationChoice();
+		var NobleCoupNode = get(MyNodeLabels.NobleCoup.toString());
+		nobleQuarrelSolvedNode.add(new Edge(closeNarrationChoice,NobleCoupNode));
+	}
+	
+	
+	@BuilderMethod
 	public void JohnDialogRejectEdges() {
 		var johnDialogRejectNode = get(MyNodeLabels.JohnDialogReject.toString());
 		var closeNarrationChoice = new CloseNarrationChoice();
 		var chooseAudiencePostJohnRejectNode = get(MyNodeLabels.ChooseAudiencePostJohnReject.toString());
 		johnDialogRejectNode.add(new Edge(closeNarrationChoice,chooseAudiencePostJohnRejectNode));
 	}
+	@BuilderMethod
+	public void ChooseAudiencePostJohnRejectEdges() {
+		var chooseAudiencePostJohnRejectNode = get(MyNodeLabels.ChooseAudiencePostJohnReject.toString());
+		var chooseNobles = new PlayerInteraction(MyChoiceLabels.TalkToNobles.toString(), noble1, Icons.talk,
+				"Talk to the Quarelling Nobles.");
+		var NobleQuarrelDialog = get(MyNodeLabels.NobleQuarrelPostJohnReject.toString());
+		chooseAudiencePostJohnRejectNode.add(new Edge(chooseNobles, NobleQuarrelDialog));
+	}
+	@BuilderMethod
+	public void NobleQuarrelDialogPostJohnRejectEdges() { 
+		var NobleQuarrelDialogNode = get(MyNodeLabels.NobleQuarrelPostJohnReject.toString());
+		var solutionChoice = new DialogChoice("The village's rent will be split equally between you two.");
+		var tyrantChoice = new DialogChoice("I will take the village for myself!");
+		var NobleQuarrelSolvedNode = get(MyNodeLabels.NobleQuarrelSolvedPostJohnReject.toString());
+		var NobleQuarrelTyrantNode = get(MyNodeLabels.NobleQuarrelTyrantPostJohnReject.toString());
+		NobleQuarrelDialogNode.add(new Edge(solutionChoice,NobleQuarrelSolvedNode));
+		NobleQuarrelDialogNode.add(new Edge(tyrantChoice, NobleQuarrelTyrantNode));
+	}
+	@BuilderMethod
+	public void NobleQuarrelSolvedPostJohnRejectEdges() { 
+		var nobleQuarrelSolvedNode = get(MyNodeLabels.NobleQuarrelSolvedPostJohnAccept.toString());
+		var closeNarrationChoice = new CloseNarrationChoice();
+		var PeasantRevoltNode = get(MyNodeLabels.PeasantRevolt.toString());
+		nobleQuarrelSolvedNode.add(new Edge(closeNarrationChoice,PeasantRevoltNode));
+	}
+	@BuilderMethod
+	public void NobleQuarrelTyrantPostJohnRejectEdges() { 
+		var nobleQuarrelSolvedNode = get(MyNodeLabels.NobleQuarrelTyrantPostJohnAccept.toString());
+		var closeNarrationChoice = new CloseNarrationChoice();
+		var PeasantRevoltNode = get(MyNodeLabels.PeasantRevolt.toString());
+		nobleQuarrelSolvedNode.add(new Edge(closeNarrationChoice,PeasantRevoltNode));
+	}
 	
 	@BuilderMethod
 	public void NobleQuarrelDialogEdges() { 
 		var nobleQuarrelDialogNode = get(MyNodeLabels.NobleQuarrelDialog.toString());
-		var solutionChoice = new DialogChoice("I will!");
-		var tyrantChoice = new DialogChoice("I refuse!!");
+		var solutionChoice = new DialogChoice("The village's rent will be split equally between you two.");
+		var tyrantChoice = new DialogChoice("I will take the village for myself!");
 		var NobleQuarrelSolvedNode = get(MyNodeLabels.NobleQuarrelSolved.toString());
 		var NobleQuarrelTyrantNode = get(MyNodeLabels.NobleQuarrelTyrant.toString());
 		nobleQuarrelDialogNode.add(new Edge(solutionChoice,NobleQuarrelSolvedNode));
 		nobleQuarrelDialogNode.add(new Edge(tyrantChoice, NobleQuarrelTyrantNode));
 	}
+	
 	@BuilderMethod
-	public void nobleQuarrelSolvedEdges() {
+	public void NobleQuarrelSolvedEdges() {
 		var nobleQuarrelSolvedNode = get(MyNodeLabels.NobleQuarrelSolved.toString());
 		var closeNarrationChoice = new CloseNarrationChoice();
 		var chooseAudiencePostNobleSolvedNode = get(MyNodeLabels.ChooseAudiencePostNobleSolved.toString());
 		nobleQuarrelSolvedNode.add(new Edge(closeNarrationChoice,chooseAudiencePostNobleSolvedNode));
 	}
+	@BuilderMethod
+	public void ChooseAudiencePostNobleSolvedEdges() {
+		var chooseAudiencePostNobleSolvedNode = get(MyNodeLabels.ChooseAudiencePostNobleSolved.toString());
+		var chooseJohn = new PlayerInteraction(MyChoiceLabels.TalkToJohn.toString(), peasantJohn, Icons.talk,
+				"Talk to the Peasant John.");
+		var JohnDialogNode = get(MyNodeLabels.JohnDialogPostNobleSolved.toString());
+		chooseAudiencePostNobleSolvedNode.add(new Edge(chooseJohn, JohnDialogNode));
+	}
+	@BuilderMethod
+	public void JohnDialogPostNobleSolvedEdges() { 
+		var johnDialogNode = get(MyNodeLabels.JohnDialogPostNobleSolved.toString());
+		var acceptJohn = new DialogChoice("I will!");
+		var rejectJohn = new DialogChoice("I refuse!!");
+		var johnDialogAcceptNode = get(MyNodeLabels.JohnDialogAcceptPostNobleSolved.toString());
+		var johnDialogRejectNode = get(MyNodeLabels.JohnDialogRejectPostNobleSolved.toString());
+		johnDialogNode.add(new Edge(acceptJohn,johnDialogAcceptNode));
+		johnDialogNode.add(new Edge(rejectJohn, johnDialogRejectNode));
+	}
+	@BuilderMethod
+	public void JohnDialogAcceptPostNobleSolvedEdges() {
+		var johnDialogAcceptNode = get(MyNodeLabels.JohnDialogAcceptPostNobleSolved.toString());
+		var closeNarrationChoice = new CloseNarrationChoice();
+		var SuccessfulReinNode = get(MyNodeLabels.SuccessfulRein.toString());
+		johnDialogAcceptNode.add(new Edge(closeNarrationChoice,SuccessfulReinNode));
+	}
+	@BuilderMethod
+	public void JohnDialogRejectPostNobleSolvedEdges() {
+		var johnDialogRejectNode = get(MyNodeLabels.JohnDialogRejectPostNobleSolved.toString());
+		var closeNarrationChoice = new CloseNarrationChoice();
+		var PeasantRevoltNode = get(MyNodeLabels.PeasantRevolt.toString());
+		johnDialogRejectNode.add(new Edge(closeNarrationChoice,PeasantRevoltNode));
+	}
+	
+	
 	@BuilderMethod
 	public void NobleQuarrelTyrantEdges() {
 		var nobleQuarrelTyrantNode = get(MyNodeLabels.NobleQuarrelTyrant.toString());
@@ -121,37 +222,43 @@ public class MyEdgeBuilder extends NodeBuilder {
 		nobleQuarrelTyrantNode.add(new Edge(closeNarrationChoice,chooseAudiencePostNobleTyrantNode));
 	}
 	@BuilderMethod
-	public void ChooseAudiencePostJohnAcceptEdges() {
-		var chooseAudiencePostJohnAcceptNode = get(MyNodeLabels.ChooseAudiencePostJohnAccept.toString());
-		var chooseNobles = new PlayerInteraction(MyChoiceLabels.TalkToNobles.toString(), noble1, Icons.talk,
-				"Talk to the Quarelling Nobles.");
-		var NobleQuarrelDialog = get(MyNodeLabels.NobleQuarrelDialog.toString());
-		chooseAudiencePostJohnAcceptNode.add(new Edge(chooseNobles, NobleQuarrelDialog));
-	}
-	@BuilderMethod
-	public void ChooseAudiencePostJohnRejectEdges() {
-		var chooseAudiencePostJohnRejectNode = get(MyNodeLabels.ChooseAudiencePostJohnReject.toString());
-		var chooseNobles = new PlayerInteraction(MyChoiceLabels.TalkToNobles.toString(), noble1, Icons.talk,
-				"Talk to the Quarelling Nobles.");
-		var NobleQuarrelDialog = get(MyNodeLabels.NobleQuarrelDialog.toString());
-		chooseAudiencePostJohnRejectNode.add(new Edge(chooseNobles, NobleQuarrelDialog));
-	}
-	@BuilderMethod
-	public void ChooseAudiencePostNobleSolvedEdges() {
-		var chooseAudiencePostNobleSolvedNode = get(MyNodeLabels.ChooseAudiencePostNobleSolved.toString());
-		var chooseJohn = new PlayerInteraction(MyChoiceLabels.TalkToJohn.toString(), peasantJohn, Icons.talk,
-				"Talk to the Peasant John.");
-		var JohnDialogNode = get(MyNodeLabels.JohnDialog.toString());
-		chooseAudiencePostNobleSolvedNode.add(new Edge(chooseJohn, JohnDialogNode));
-	}
-	@BuilderMethod
 	public void ChooseAudiencePostNobleTyrantEdges() {
 		var chooseAudiencePostNobleTyrantNode = get(MyNodeLabels.ChooseAudiencePostNobleTyrant.toString());
 		var chooseJohn = new PlayerInteraction(MyChoiceLabels.TalkToJohn.toString(), peasantJohn, Icons.talk,
 				"Talk to the Peasant John.");
-		var JohnDialogNode = get(MyNodeLabels.JohnDialog.toString());
+		var JohnDialogNode = get(MyNodeLabels.JohnDialogAcceptPostNobleTyrant.toString());
 		chooseAudiencePostNobleTyrantNode.add(new Edge(chooseJohn, JohnDialogNode));
 	}
+	@BuilderMethod
+	public void JohnDialogPostPostNobleTyrantEdges() { 
+		var johnDialogNode = get(MyNodeLabels.JohnDialogAcceptPostNobleTyrant.toString());
+		var acceptJohn = new DialogChoice("I will!");
+		var rejectJohn = new DialogChoice("I refuse!!");
+		var johnDialogAcceptNode = get(MyNodeLabels.JohnDialogAcceptPostNobleTyrant.toString());
+		var johnDialogRejectNode = get(MyNodeLabels.JohnDialogRejectPostNobleTyrant.toString());
+		johnDialogNode.add(new Edge(acceptJohn,johnDialogAcceptNode));
+		johnDialogNode.add(new Edge(rejectJohn, johnDialogRejectNode));
+	}
+	@BuilderMethod
+	public void JohnDialogAcceptPostNobleTyrantEdges() {
+		var johnDialogAcceptNode = get(MyNodeLabels.JohnDialogAcceptPostNobleTyrant.toString());
+		var closeNarrationChoice = new CloseNarrationChoice();
+		var NobleCoupNode = get(MyNodeLabels.NobleCoup.toString());
+		johnDialogAcceptNode.add(new Edge(closeNarrationChoice,NobleCoupNode));
+	}
+	@BuilderMethod
+	public void JohnDialogRejectPostNobleTyrantEdges() {
+		var johnDialogRejectNode = get(MyNodeLabels.JohnDialogRejectPostNobleTyrant.toString());
+		var closeNarrationChoice = new CloseNarrationChoice();
+		var NobleCoupNode = get(MyNodeLabels.NobleCoup.toString());
+		johnDialogRejectNode.add(new Edge(closeNarrationChoice,NobleCoupNode));
+	}
+
+
+
+
+
+	
 	
 	
 	

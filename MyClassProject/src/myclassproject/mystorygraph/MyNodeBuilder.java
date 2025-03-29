@@ -98,10 +98,10 @@ public class MyNodeBuilder extends NodeBuilder {
 		
 		johnDialogAccept
 		.add(new HideDialog())
-		.add(new NarrationSequence("The peasants now see you as generious"))
+		.add(new SetNarration("The peasants now see you as generious"))
+		.add(new ShowNarration())
 		.add(new Dance(peasantJohn));
 		
-		//.add(new AdjustReputation(10));
 		
 	}
 	
@@ -111,7 +111,8 @@ public class MyNodeBuilder extends NodeBuilder {
 		
 		johnDialogReject
 		.add(new HideDialog())
-		.add(new NarrationSequence("The peasants now resent you"));
+		.add(new SetNarration("The peasants now resent you!"))
+		.add(new ShowNarration());
 
 
 	}
@@ -122,7 +123,8 @@ public class MyNodeBuilder extends NodeBuilder {
 		
 		NobleQuarrelSolved
 		.add(new HideDialog())
-		.add(new NarrationSequence("The nobles are satfied with your decision"))
+		.add(new SetNarration("The nobles are satfied with your decision"))
+		.add(new ShowNarration())
 		.add(new Dance(noble1));
 
 		
@@ -133,7 +135,8 @@ public class MyNodeBuilder extends NodeBuilder {
 		
 		NobleQuarrelSolved
 		.add(new HideDialog())
-		.add(new NarrationSequence("The nobles are satfied with your decision"));
+		.add(new SetNarration("The nobles are upset with your decision"))
+		.add(new ShowNarration());
 	}
 	
 	public void chooseAudiencePostJohnAcceptActions() {
@@ -157,6 +160,127 @@ public class MyNodeBuilder extends NodeBuilder {
 		chooseAudiencePostNobleTyrant
 		.add(new HideNarration());
 	}
+	@BuilderMethod
+	public void johnDialongActionsPostNobleSolvedActions() {
+		var johnDialong = get(MyNodeLabels.JohnDialogPostNobleSolved.toString());
+		
+		johnDialong
+		.add(new DialogSequence(player, peasantJohn, List.of("My lord! my region's grain storehouse is beginning to fall apart. I beg of you on behalf of my fellow commoners, please fund the construction of a new storehouse. Otherwise we risk all of our grain to rot and starving in the winter."),
+				List.of("I will!", "I refuse!")));
+	}
+	@BuilderMethod
+	public void johnDialongActionsPostNobleTyrant() {
+		var johnDialong = get(MyNodeLabels.JohnDialogPostNobleTyrant.toString());
+		
+		johnDialong
+		.add(new DialogSequence(player, peasantJohn, List.of("My lord! my region's grain storehouse is beginning to fall apart. I beg of you on behalf of my fellow commoners, please fund the construction of a new storehouse. Otherwise we risk all of our grain to rot and starving in the winter."),
+				List.of("I will!", "I refuse!")));
+	}
+	@BuilderMethod
+	public void nobleQuarrelDialogPostJohnAcceptActions() {
+		var nobleQuarrelDialog = get(MyNodeLabels.NobleQuarrelPostJohnAccept.toString());
+		
+		nobleQuarrelDialog
+		.add(new DialogSequence(player, noble1, List.of("My liege! me and my peer have been quarreling over the borders of our newly inherited lands. Particularly there's one village whose ownership is 'vague'. Me and the fellow noble petition for you to resolve this issue."),
+				List.of("The village's rent will be split equally between you two.", "I will take the village for myself!")));
+	}
+	@BuilderMethod
+	public void nobleQuarrelDialogPostJohnRejectActions() {
+		var nobleQuarrelDialog = get(MyNodeLabels.NobleQuarrelPostJohnReject.toString());
+		
+		nobleQuarrelDialog
+		.add(new DialogSequence(player, noble1, List.of("My liege! me and my peer have been quarreling over the borders of our newly inherited lands. Particularly there's one village whose ownership is 'vague'. Me and the fellow noble petition for you to resolve this issue."),
+				List.of("The village's rent will be split equally between you two.", "I will take the village for myself!")));
+	}
+	@BuilderMethod
+	public void johnDialogAcceptPostNobleSolvedActions() {
+		var johnDialogAccept = get(MyNodeLabels.JohnDialogAcceptPostNobleSolved.toString());
+		
+		johnDialogAccept
+		.add(new HideDialog())
+		.add(new SetNarration("The peasants now see you as generious"))
+		.add(new ShowNarration())
+		.add(new Dance(peasantJohn));
+		
+		
+	}
+	
+	@BuilderMethod
+	public void johnDialogRejectPostNobleSolvedActions() {
+		var johnDialogReject = get(MyNodeLabels.JohnDialogRejectPostNobleSolved.toString());
+		
+		johnDialogReject
+		.add(new HideDialog())
+		.add(new SetNarration("The peasants now resent you!"))
+		.add(new ShowNarration());
+
+
+	}
+	@BuilderMethod
+	public void johnDialogAcceptPostNobleTyrantActions() {
+		var johnDialogAccept = get(MyNodeLabels.JohnDialogAcceptPostNobleTyrant.toString());
+		
+		johnDialogAccept
+		.add(new HideDialog())
+		.add(new SetNarration("The peasants now see you as generious"))
+		.add(new ShowNarration())
+		.add(new Dance(peasantJohn));
+		
+		
+	}
+	
+	@BuilderMethod
+	public void johnDialogRejectPostNobleTyrantActions() {
+		var johnDialogReject = get(MyNodeLabels.JohnDialogRejectPostNobleTyrant.toString());
+		
+		johnDialogReject
+		.add(new HideDialog())
+		.add(new SetNarration("The peasants now resent you!"))
+		.add(new ShowNarration());
+
+	}
+	@BuilderMethod
+	public void nobleQuarrelDialogSolvedPostJohnAcceptActions() {
+		var NobleQuarrelSolved = get(MyNodeLabels.NobleQuarrelSolvedPostJohnAccept.toString());
+		
+		NobleQuarrelSolved
+		.add(new HideDialog())
+		.add(new SetNarration("The nobles are satfied with your decision"))
+		.add(new ShowNarration())
+		.add(new Dance(noble1));
+
+		
+	}
+	@BuilderMethod
+	public void nobleQuarrelDialogTryantPostJohnAcceptActions() {
+		var NobleQuarrelSolved = get(MyNodeLabels.NobleQuarrelTyrantPostJohnAccept.toString());
+		
+		NobleQuarrelSolved
+		.add(new HideDialog())
+		.add(new SetNarration("The nobles are upset with your decision"))
+		.add(new ShowNarration());
+	}
+	
+	@BuilderMethod
+	public void PeasantRevoltActions() {
+		var PeasantRevolt = get(MyNodeLabels.PeasantRevolt.toString());
+		PeasantRevolt
+		.add(new SetNarration("PeasantRevolt"));
+	}
+	@BuilderMethod
+	public void NobleCoupActions() {
+		var NobleCoup = get(MyNodeLabels.NobleCoup.toString());
+		NobleCoup
+		.add(new SetNarration("NobleCoup"));
+	}
+	@BuilderMethod
+	public void SuccessfulReinActions() {
+		var NobleCoup = get(MyNodeLabels.SuccessfulRein.toString());
+		NobleCoup
+		.add(new SetNarration("SuccessfulRein"));
+	}
+	
+	
 	
 	
 
