@@ -138,23 +138,25 @@ public class MyNodeBuilder extends NodeBuilder {
 		.add(new SetNarration("The nobles are upset with your decision"))
 		.add(new ShowNarration());
 	}
-	
+	@BuilderMethod
 	public void chooseAudiencePostJohnAcceptActions() {
 		var chooseAudiencePostJohnAccept = get(MyNodeLabels.ChooseAudiencePostJohnAccept.toString());
 		chooseAudiencePostJohnAccept
 		.add(new HideNarration());
 	}
-
+	@BuilderMethod
 	public void chooseAudiencePostJohnRejectActions() {
 		var chooseAudiencePostJohnReject = get(MyNodeLabels.ChooseAudiencePostJohnReject.toString());
 		chooseAudiencePostJohnReject
 		.add(new HideNarration());
 	}
+	@BuilderMethod
 	public void chooseAudiencePostNobleSolvedActions() {
 		var chooseAudiencePostNobleSolved = get(MyNodeLabels.ChooseAudiencePostNobleSolved.toString());
 		chooseAudiencePostNobleSolved
 		.add(new HideNarration());
 	}
+	@BuilderMethod
 	public void chooseAudiencePostNobleTyrant() {
 		var chooseAudiencePostNobleTyrant = get(MyNodeLabels.ChooseAudiencePostNobleTyrant.toString());
 		chooseAudiencePostNobleTyrant
