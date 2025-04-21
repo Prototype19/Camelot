@@ -28,5 +28,9 @@ public final class MyStoryEntities {
 	public static final Place greatHall = new Place("Hall", PlaceTypes.GreatHall);
 	public static final Furniture bedroomDoor = new Furniture(bedroom, FurnitureTypes.Door);
 	public static final Furniture greatHallDoor = new Furniture(greatHall, FurnitureTypes.Gate);
+	public static final Characters peasant1 = new Characters("Peasant1", BodyTypes.C, Clothing.Peasant, HairStyle.Straight, Colors.Blonde, 3);
+	public static final Characters peasant2 = new Characters("Peasant2", BodyTypes.A, Clothing.Peasant, HairStyle.Short, Colors.Blonde, 2);
+	public static final Item torch = new Item("LitTorch", ItemTypes.LitTorch);
+	public static final Item hammer = new Item("Hammer", ItemTypes.Hammer);
 
 }

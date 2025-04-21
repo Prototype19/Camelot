@@ -31,7 +31,7 @@ public class MyEdgeBuilder extends NodeBuilder {
 	 * These methods must have a BuilderMethod annotation.
 	 */
 	
-	// Daron
+	// INITIAL STATE
 	@BuilderMethod
 	public void rootEdges() {
 
@@ -57,6 +57,7 @@ public class MyEdgeBuilder extends NodeBuilder {
 		var chooseAudienceNode = get(MyNodeLabels.ChooseAudience.toString());
 		atBedroomNode.add(new Edge(leavebedroom, chooseAudienceNode));
 	}
+	
 	@BuilderMethod
 	public void ChooseAudienceEdges() {
 		var chooseAudienceNode = get(MyNodeLabels.ChooseAudience.toString());
@@ -70,19 +71,20 @@ public class MyEdgeBuilder extends NodeBuilder {
 		chooseAudienceNode.add(new Edge(chooseNobles, NobleQuarrelDialog));
 	}
 	
+
 	@BuilderMethod
 	public void JohnDialogEdges() { 
 		var johnDialogNode = get(MyNodeLabels.JohnDialog.toString());
 		var acceptJohn = new DialogChoice("I will!");
-		var rejectJohn = new DialogChoice("I refuse!!");
+		var rejectJohn = new DialogChoice("I refuse!");
 		var johnDialogAcceptNode = get(MyNodeLabels.JohnDialogAccept.toString());
 		var johnDialogRejectNode = get(MyNodeLabels.JohnDialogReject.toString());
 		johnDialogNode.add(new Edge(acceptJohn,johnDialogAcceptNode));
 		johnDialogNode.add(new Edge(rejectJohn, johnDialogRejectNode));
 	}
-
+		// BRANCH: JOHN ACCEPT
 	@BuilderMethod
-	public void JohnDialogAcceptEdges() {
+		public void JohnDialogAcceptEdges() {
 		var johnDialogAcceptNode = get(MyNodeLabels.JohnDialogAccept.toString());
 		var closeNarrationChoice = new CloseNarrationChoice();
 		var chooseAudiencePostJohnAcceptNode = get(MyNodeLabels.ChooseAudiencePostJohnAccept.toString());
@@ -226,12 +228,12 @@ public class MyEdgeBuilder extends NodeBuilder {
 		var chooseAudiencePostNobleTyrantNode = get(MyNodeLabels.ChooseAudiencePostNobleTyrant.toString());
 		var chooseJohn = new PlayerInteraction(MyChoiceLabels.TalkToJohn.toString(), peasantJohn, Icons.talk,
 				"Talk to the Peasant John.");
-		var JohnDialogNode = get(MyNodeLabels.JohnDialogAcceptPostNobleTyrant.toString());
+		var JohnDialogNode = get(MyNodeLabels.JohnDialogPostNobleTyrant.toString());
 		chooseAudiencePostNobleTyrantNode.add(new Edge(chooseJohn, JohnDialogNode));
 	}
 	@BuilderMethod
 	public void JohnDialogPostPostNobleTyrantEdges() { 
-		var johnDialogNode = get(MyNodeLabels.JohnDialogAcceptPostNobleTyrant.toString());
+		var johnDialogNode = get(MyNodeLabels.JohnDialogPostNobleTyrant.toString());
 		var acceptJohn = new DialogChoice("I will!");
 		var rejectJohn = new DialogChoice("I refuse!!");
 		var johnDialogAcceptNode = get(MyNodeLabels.JohnDialogAcceptPostNobleTyrant.toString());
