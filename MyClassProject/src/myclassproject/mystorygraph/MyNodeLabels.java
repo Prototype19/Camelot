@@ -29,7 +29,27 @@ public enum MyNodeLabels{
 	ChooseAudiencePostJohnReject, NobleQuarrelPostJohnReject,
 		//NobleQuarrelDialog
 		NobleQuarrelSolvedPostJohnReject, NobleQuarrelTyrantPostJohnReject, 
+	
 		
+	//Leave Hall
+	LeavingHallPostJohnAcceptPostNobleSolved,
+	LeavingHallPostJohnRejectPostNobleSolved,
+	LeavingHallPostJohnAcceptPostNobleTyrant,
+	LeavingHallPostJohnRejectPostNobleTyrant,
+	LeavingHallPostNobleSolvedPostJohnAccept,
+	LeavingHallPostNobleTyrantPostJohnAccept,
+	LeavingHallPostNobleSolvedPostJohnReject,
+	LeavingHallPostNobleTyrantPostJohnReject,
+	//Bed Scenes
+	BedtimePostJohnAcceptPostNobleSolved,
+	BedtimePostJohnRejectPostNobleSolved,
+	BedtimePostJohnAcceptPostNobleTyrant,
+	BedtimePostJohnRejectPostNobleTyrant,
+	BedtimePostNobleSolvedPostJohnAccept,
+	BedtimePostNobleTyrantPostJohnAccept,
+	BedtimePostNobleSolvedPostJohnReject,
+	BedtimePostNobleTyrantPostJohnReject,
+	
 	//Endings
 	PeasantRevolt,NobleCoup,SuccessfulRein
 }

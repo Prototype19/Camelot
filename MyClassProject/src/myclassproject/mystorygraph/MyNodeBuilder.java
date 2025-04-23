@@ -103,8 +103,7 @@ public class MyNodeBuilder extends NodeBuilder {
 			johnDialogAccept
 			.add(new HideDialog())
 			.add(new SetNarration("The peasants now see you as generious"))
-			.add(new ShowNarration())
-			.add(new Dance(peasantJohn));
+			.add(new ShowNarration());
 			
 			
 		}
@@ -112,7 +111,8 @@ public class MyNodeBuilder extends NodeBuilder {
 				public void chooseAudiencePostJohnAcceptActions() {
 			var chooseAudiencePostJohnAccept = get(MyNodeLabels.ChooseAudiencePostJohnAccept.toString());
 			chooseAudiencePostJohnAccept
-			.add(new HideNarration());
+			.add(new HideNarration())
+			.add(new Dance(peasantJohn));
 		}
 		@BuilderMethod
 				public void nobleQuarrelDialogPostJohnAcceptActions() {
@@ -129,8 +129,7 @@ public class MyNodeBuilder extends NodeBuilder {
 			NobleQuarrelSolved
 			.add(new HideDialog())
 			.add(new SetNarration("The nobles are satfied with your decision"))
-			.add(new ShowNarration())
-			.add(new Dance(noble1));
+			.add(new ShowNarration());
 	
 		}
 		@BuilderMethod
@@ -201,8 +200,8 @@ NobleQuarrelTyrant
 			NobleQuarrelSolved
 			.add(new HideDialog())
 			.add(new SetNarration("The nobles are satfied with your decision"))
-			.add(new ShowNarration())
-			.add(new Dance(noble1));
+			.add(new ShowNarration());
+			
 	
 			
 		}
@@ -210,7 +209,8 @@ NobleQuarrelTyrant
 				public void chooseAudiencePostNobleSolvedActions() {
 			var chooseAudiencePostNobleSolved = get(MyNodeLabels.ChooseAudiencePostNobleSolved.toString());
 			chooseAudiencePostNobleSolved
-			.add(new HideNarration());
+			.add(new HideNarration())
+			.add(new Dance(noble1));
 		}
 		@BuilderMethod
 				public void johnDialongActionsPostNobleSolvedActions() {
@@ -227,8 +227,7 @@ NobleQuarrelTyrant
 			johnDialogAccept
 			.add(new HideDialog())
 			.add(new SetNarration("The peasants now see you as generious"))
-			.add(new ShowNarration())
-			.add(new Dance(peasantJohn));
+			.add(new ShowNarration());
 		}
 		@BuilderMethod
 					public void johnDialogRejectPostNobleSolvedActions() {
@@ -271,8 +270,7 @@ NobleQuarrelTyrant
 			johnDialogAccept
 			.add(new HideDialog())
 			.add(new SetNarration("The peasants now see you as generious"))
-			.add(new ShowNarration())
-			.add(new Dance(peasantJohn));
+			.add(new ShowNarration());
 			
 		}
 		@BuilderMethod
@@ -286,14 +284,68 @@ NobleQuarrelTyrant
 
 	}
 	
-
-
-
-
-	
-
-
-	
+	//FINAL SEQUENCE
+	@BuilderMethod
+	public void LeavingHallPostJohnAcceptPostNobleSolvedActions() {
+		var LeavingHallPostJohnAcceptPostNobleSolved = get(MyNodeLabels.LeavingHallPostJohnAcceptPostNobleSolved.toString());
+		
+		LeavingHallPostJohnAcceptPostNobleSolved
+		.add(new HideNarration())
+		.add(new Dance(peasantJohn));
+	}
+	@BuilderMethod
+	public void LeavingHallPostJohnRejectPostNobleSolvedActions() {
+		var LeavingHallPostJohnRejectPostNobleSolved = get(MyNodeLabels.LeavingHallPostJohnRejectPostNobleSolved.toString());
+		
+		LeavingHallPostJohnRejectPostNobleSolved
+		.add(new HideNarration());
+	}
+	@BuilderMethod
+	public void LeavingHallPostJohnAcceptPostNobleTyrantActions() {
+		var LeavingHallPostJohnAcceptPostNobleTyrant = get(MyNodeLabels.LeavingHallPostJohnAcceptPostNobleTyrant.toString());
+		
+		LeavingHallPostJohnAcceptPostNobleTyrant
+		.add(new HideNarration())
+		.add(new Dance(peasantJohn));
+	}
+	@BuilderMethod
+	public void LeavingHallPostJohnRejectPostNobleTyrantActions() {
+		var LeavingHallPostJohnRejectPostNobleTyrant = get(MyNodeLabels.LeavingHallPostJohnRejectPostNobleTyrant.toString());
+		
+		LeavingHallPostJohnRejectPostNobleTyrant
+		.add(new HideNarration());
+	}
+	@BuilderMethod
+	public void LeavingHallPostNobleSolvedPostJohnAcceptActions() {
+		var LeavingHallPostNobleSolvedPostJohnAccept = get(MyNodeLabels.LeavingHallPostNobleSolvedPostJohnAccept.toString());
+		
+		LeavingHallPostNobleSolvedPostJohnAccept
+		.add(new HideNarration())
+		.add(new Dance(noble1));
+	}
+	@BuilderMethod
+	public void LeavingHallPostNobleTyrantPostJohnAcceptActions() {
+		var LeavingHallPostNobleTyrantPostJohnAccept = get(MyNodeLabels.LeavingHallPostNobleTyrantPostJohnAccept.toString());
+		
+		LeavingHallPostNobleTyrantPostJohnAccept
+		.add(new HideNarration());
+	}
+	@BuilderMethod
+	public void LeavingHallPostNobleSolvedPostJohnRejectActions() {
+		var LeavingHallPostNobleSolvedPostJohnReject = get(MyNodeLabels.LeavingHallPostNobleSolvedPostJohnReject.toString());
+		
+		LeavingHallPostNobleSolvedPostJohnReject
+		.add(new HideNarration())
+		.add(new Dance(noble1));
+	}
+	@BuilderMethod
+	public void LeavingHallPostNobleTyrantPostJohnRejectActions() {
+		var LeavingHallPostNobleTyrantPostJohnReject = get(MyNodeLabels.LeavingHallPostNobleTyrantPostJohnReject.toString());
+		
+		LeavingHallPostNobleTyrantPostJohnReject
+		.add(new HideNarration())
+		.add(new Dance(noble1));
+	}
 
 
 
@@ -302,8 +354,6 @@ NobleQuarrelTyrant
 	public void PeasantRevoltActions() {
 		var PeasantRevolt = get(MyNodeLabels.PeasantRevolt.toString());
 		PeasantRevolt
-		.add(new HideNarration())
-
 		.add(new DisableInput())
 		.add(new CreateCharacterSequence(peasant1))
 		.add(new SetPosition(peasant1, bedroom, "Door"))

@@ -112,15 +112,15 @@ public class MyEdgeBuilder extends NodeBuilder {
 	public void NobleQuarrelSolvedPostJohnAcceptEdges() { 
 		var nobleQuarrelSolvedNode = get(MyNodeLabels.NobleQuarrelSolvedPostJohnAccept.toString());
 		var closeNarrationChoice = new CloseNarrationChoice();
-		var SuccessfulReinNode = get(MyNodeLabels.SuccessfulRein.toString());
-		nobleQuarrelSolvedNode.add(new Edge(closeNarrationChoice,SuccessfulReinNode));
+		var LeavingHallPostNobleSolvedPostJohnAcceptNode = get(MyNodeLabels.LeavingHallPostNobleSolvedPostJohnAccept.toString());
+		nobleQuarrelSolvedNode.add(new Edge(closeNarrationChoice,LeavingHallPostNobleSolvedPostJohnAcceptNode));
 	}
 	@BuilderMethod
 	public void NobleQuarrelTyrantPostJohnAcceptEdges() { 
 		var nobleQuarrelSolvedNode = get(MyNodeLabels.NobleQuarrelTyrantPostJohnAccept.toString());
 		var closeNarrationChoice = new CloseNarrationChoice();
-		var NobleCoupNode = get(MyNodeLabels.NobleCoup.toString());
-		nobleQuarrelSolvedNode.add(new Edge(closeNarrationChoice,NobleCoupNode));
+		var LeavingHallPostNobleTyrantPostJohnAcceptNode = get(MyNodeLabels.LeavingHallPostNobleTyrantPostJohnAccept.toString());
+		nobleQuarrelSolvedNode.add(new Edge(closeNarrationChoice,LeavingHallPostNobleTyrantPostJohnAcceptNode));
 	}
 	
 	
@@ -153,15 +153,15 @@ public class MyEdgeBuilder extends NodeBuilder {
 	public void NobleQuarrelSolvedPostJohnRejectEdges() { 
 		var nobleQuarrelSolvedNode = get(MyNodeLabels.NobleQuarrelSolvedPostJohnAccept.toString());
 		var closeNarrationChoice = new CloseNarrationChoice();
-		var PeasantRevoltNode = get(MyNodeLabels.PeasantRevolt.toString());
-		nobleQuarrelSolvedNode.add(new Edge(closeNarrationChoice,PeasantRevoltNode));
+		var LeavingHallPostNobleSolvedPostJohnRejectNode = get(MyNodeLabels.LeavingHallPostNobleSolvedPostJohnReject.toString());
+		nobleQuarrelSolvedNode.add(new Edge(closeNarrationChoice,LeavingHallPostNobleSolvedPostJohnRejectNode));
 	}
 	@BuilderMethod
 	public void NobleQuarrelTyrantPostJohnRejectEdges() { 
 		var nobleQuarrelSolvedNode = get(MyNodeLabels.NobleQuarrelTyrantPostJohnAccept.toString());
 		var closeNarrationChoice = new CloseNarrationChoice();
-		var PeasantRevoltNode = get(MyNodeLabels.PeasantRevolt.toString());
-		nobleQuarrelSolvedNode.add(new Edge(closeNarrationChoice,PeasantRevoltNode));
+		var LeavingHallPostNobleTyrantPostJohnRejectNode = get(MyNodeLabels.LeavingHallPostNobleTyrantPostJohnReject.toString());
+		nobleQuarrelSolvedNode.add(new Edge(closeNarrationChoice,LeavingHallPostNobleTyrantPostJohnRejectNode));
 	}
 	
 	@BuilderMethod
@@ -204,15 +204,15 @@ public class MyEdgeBuilder extends NodeBuilder {
 	public void JohnDialogAcceptPostNobleSolvedEdges() {
 		var johnDialogAcceptNode = get(MyNodeLabels.JohnDialogAcceptPostNobleSolved.toString());
 		var closeNarrationChoice = new CloseNarrationChoice();
-		var SuccessfulReinNode = get(MyNodeLabels.SuccessfulRein.toString());
-		johnDialogAcceptNode.add(new Edge(closeNarrationChoice,SuccessfulReinNode));
+		var LeavingHallPostJohnAcceptPostNobleSolvedNode = get(MyNodeLabels.LeavingHallPostJohnAcceptPostNobleSolved.toString());
+		johnDialogAcceptNode.add(new Edge(closeNarrationChoice,LeavingHallPostJohnAcceptPostNobleSolvedNode));
 	}
 	@BuilderMethod
 	public void JohnDialogRejectPostNobleSolvedEdges() {
 		var johnDialogRejectNode = get(MyNodeLabels.JohnDialogRejectPostNobleSolved.toString());
 		var closeNarrationChoice = new CloseNarrationChoice();
-		var PeasantRevoltNode = get(MyNodeLabels.PeasantRevolt.toString());
-		johnDialogRejectNode.add(new Edge(closeNarrationChoice,PeasantRevoltNode));
+		var LeavingHallPostJohnRejectPostNobleSolvedNode = get(MyNodeLabels.LeavingHallPostJohnRejectPostNobleSolved.toString());
+		johnDialogRejectNode.add(new Edge(closeNarrationChoice,LeavingHallPostJohnRejectPostNobleSolvedNode));
 	}
 	
 	
@@ -245,15 +245,15 @@ public class MyEdgeBuilder extends NodeBuilder {
 	public void JohnDialogAcceptPostNobleTyrantEdges() {
 		var johnDialogAcceptNode = get(MyNodeLabels.JohnDialogAcceptPostNobleTyrant.toString());
 		var closeNarrationChoice = new CloseNarrationChoice();
-		var NobleCoupNode = get(MyNodeLabels.NobleCoup.toString());
-		johnDialogAcceptNode.add(new Edge(closeNarrationChoice,NobleCoupNode));
+		var LeavingHallPostJohnAcceptPostNobleTyrantNode = get(MyNodeLabels.LeavingHallPostJohnAcceptPostNobleTyrant.toString());
+		johnDialogAcceptNode.add(new Edge(closeNarrationChoice,LeavingHallPostJohnAcceptPostNobleTyrantNode));
 	}
 	@BuilderMethod
 	public void JohnDialogRejectPostNobleTyrantEdges() {
 		var johnDialogRejectNode = get(MyNodeLabels.JohnDialogRejectPostNobleTyrant.toString());
 		var closeNarrationChoice = new CloseNarrationChoice();
-		var NobleCoupNode = get(MyNodeLabels.NobleCoup.toString());
-		johnDialogRejectNode.add(new Edge(closeNarrationChoice,NobleCoupNode));
+		var LeavingHallPostJohnRejectPostNobleTyrantNode = get(MyNodeLabels.LeavingHallPostJohnRejectPostNobleTyrant.toString());
+		johnDialogRejectNode.add(new Edge(closeNarrationChoice,LeavingHallPostJohnRejectPostNobleTyrantNode));
 	}
 
 
