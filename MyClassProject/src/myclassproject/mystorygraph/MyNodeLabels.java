@@ -2,7 +2,7 @@ package myclassproject.mystorygraph;
 
 //Fill this enum with the labels you chose for the NODES of your story graph.
 public enum MyNodeLabels{
-	root, intro, atBedroom, 
+	root, intro, atBedroom, hallwayin,
 	//Choose Audience
 	ChooseAudience, JohnDialog, NobleQuarrelDialog, 
 		//JohnDialog
@@ -30,7 +30,7 @@ public enum MyNodeLabels{
 		//NobleQuarrelDialog
 		NobleQuarrelSolvedPostJohnReject, NobleQuarrelTyrantPostJohnReject, 
 	
-		
+	
 	//Leave Hall
 	LeavingHallPostJohnAcceptPostNobleSolved,
 	LeavingHallPostJohnRejectPostNobleSolved,
@@ -40,6 +40,15 @@ public enum MyNodeLabels{
 	LeavingHallPostNobleTyrantPostJohnAccept,
 	LeavingHallPostNobleSolvedPostJohnReject,
 	LeavingHallPostNobleTyrantPostJohnReject,
+	//Hallway
+	HallwayoutPostJohnAcceptPostNobleSolved,
+	HallwayoutPostJohnRejectPostNobleSolved,
+	HallwayoutPostJohnAcceptPostNobleTyrant,
+	HallwayoutPostJohnRejectPostNobleTyrant,
+	HallwayoutPostNobleSolvedPostJohnAccept,
+	HallwayoutPostNobleTyrantPostJohnAccept,
+	HallwayoutPostNobleSolvedPostJohnReject,
+	HallwayoutPostNobleTyrantPostJohnReject,
 	//Bed Scenes
 	BedtimePostJohnAcceptPostNobleSolved,
 	BedtimePostJohnRejectPostNobleSolved,

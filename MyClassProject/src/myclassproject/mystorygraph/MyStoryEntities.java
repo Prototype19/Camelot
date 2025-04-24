@@ -23,11 +23,15 @@ public final class MyStoryEntities {
 	// Daron
 	public static final Characters player = new Characters("Player", BodyTypes.H, Clothing.King, HairStyle.Spiky, Colors.Black, 6);
 	public static final Characters peasantJohn = new Characters("Peasant John", BodyTypes.F, Clothing.Peasant, HairStyle.Bald, Colors.Brown, 4);
-	public static final Characters noble1 = new Characters("Noble", BodyTypes.D, Clothing.Noble, HairStyle.Long, Colors.Blonde, 5);
+	public static final Characters noble1 = new Characters("Sir Cibo", BodyTypes.D, Clothing.Noble, HairStyle.Long, Colors.Blonde, 5);
 	public static final Place bedroom = new Place("Home", PlaceTypes.CastleBedroom);
 	public static final Place greatHall = new Place("Hall", PlaceTypes.GreatHall);
+	public static final Place hallway = new Place("Hallway", PlaceTypes.Hallway);
+	public static final Place outside = new Place("Outside", PlaceTypes.ForestPath);
 	public static final Furniture bedroomDoor = new Furniture(bedroom, FurnitureTypes.Door);
 	public static final Furniture greatHallDoor = new Furniture(greatHall, FurnitureTypes.Gate);
+	public static final Furniture hallwayDoor = new Furniture(hallway, FurnitureTypes.Door);
+	public static final Furniture hallwayBackDoor = new Furniture(hallway, FurnitureTypes.Door);
 	public static final Characters peasant1 = new Characters("Peasant1", BodyTypes.C, Clothing.Peasant, HairStyle.Straight, Colors.Blonde, 3);
 	public static final Characters peasant2 = new Characters("Peasant2", BodyTypes.A, Clothing.Peasant, HairStyle.Short, Colors.Blonde, 2);
 	public static final Item torch = new Item("LitTorch", ItemTypes.LitTorch);

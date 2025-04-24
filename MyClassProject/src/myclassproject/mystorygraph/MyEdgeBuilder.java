@@ -53,10 +53,18 @@ public class MyEdgeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void atBedroomEdges() {
 		var atBedroomNode = get(MyNodeLabels.atBedroom.toString());
-		var leavebedroom = new PlayerInteraction(MyChoiceLabels.LeaveBedroom.toString(), bedroomDoor, Icons.exit, "Go to Throne Room");
-		var chooseAudienceNode = get(MyNodeLabels.ChooseAudience.toString());
-		atBedroomNode.add(new Edge(leavebedroom, chooseAudienceNode));
+		var leavebedroom = new PlayerInteraction(MyChoiceLabels.LeaveBedroom.toString(), bedroomDoor, Icons.exit, "Go to Hallway");
+		var hallwayinNode = get(MyNodeLabels.hallwayin.toString());
+		atBedroomNode.add(new Edge(leavebedroom, hallwayinNode));
 	}
+	@BuilderMethod
+	public void atHallEdges() {
+		var hallwayinNode = get(MyNodeLabels.hallwayin.toString());
+		var leavebedroom = new PlayerInteraction(MyChoiceLabels.EnterHall.toString(), hallwayBackDoor, Icons.exit, "Go to Throne Room");
+		var chooseAudienceNode = get(MyNodeLabels.ChooseAudience.toString());
+		hallwayinNode.add(new Edge(leavebedroom, chooseAudienceNode));
+	}
+	
 	
 	@BuilderMethod
 	public void ChooseAudienceEdges() {
@@ -151,14 +159,14 @@ public class MyEdgeBuilder extends NodeBuilder {
 	}
 	@BuilderMethod
 	public void NobleQuarrelSolvedPostJohnRejectEdges() { 
-		var nobleQuarrelSolvedNode = get(MyNodeLabels.NobleQuarrelSolvedPostJohnAccept.toString());
+		var nobleQuarrelSolvedNode = get(MyNodeLabels.NobleQuarrelSolvedPostJohnReject.toString());
 		var closeNarrationChoice = new CloseNarrationChoice();
 		var LeavingHallPostNobleSolvedPostJohnRejectNode = get(MyNodeLabels.LeavingHallPostNobleSolvedPostJohnReject.toString());
 		nobleQuarrelSolvedNode.add(new Edge(closeNarrationChoice,LeavingHallPostNobleSolvedPostJohnRejectNode));
 	}
 	@BuilderMethod
 	public void NobleQuarrelTyrantPostJohnRejectEdges() { 
-		var nobleQuarrelSolvedNode = get(MyNodeLabels.NobleQuarrelTyrantPostJohnAccept.toString());
+		var nobleQuarrelSolvedNode = get(MyNodeLabels.NobleQuarrelTyrantPostJohnReject.toString());
 		var closeNarrationChoice = new CloseNarrationChoice();
 		var LeavingHallPostNobleTyrantPostJohnRejectNode = get(MyNodeLabels.LeavingHallPostNobleTyrantPostJohnReject.toString());
 		nobleQuarrelSolvedNode.add(new Edge(closeNarrationChoice,LeavingHallPostNobleTyrantPostJohnRejectNode));
@@ -254,6 +262,120 @@ public class MyEdgeBuilder extends NodeBuilder {
 		var closeNarrationChoice = new CloseNarrationChoice();
 		var LeavingHallPostJohnRejectPostNobleTyrantNode = get(MyNodeLabels.LeavingHallPostJohnRejectPostNobleTyrant.toString());
 		johnDialogRejectNode.add(new Edge(closeNarrationChoice,LeavingHallPostJohnRejectPostNobleTyrantNode));
+	}
+	//Leaving Hall
+	@BuilderMethod
+	public void LeavingHallPostJohnAcceptPostNobleSolvedEdges() {
+		var LeavingHallNode = get(MyNodeLabels.LeavingHallPostJohnAcceptPostNobleSolved.toString());
+		var leavehall = new PlayerInteraction(MyChoiceLabels.LeaveHall.toString(), greatHallDoor, Icons.exit, "Leave Throne Room");
+		var hallwayoutNode = get(MyNodeLabels.HallwayoutPostJohnAcceptPostNobleSolved.toString());
+		LeavingHallNode.add(new Edge(leavehall, hallwayoutNode));
+	}
+	@BuilderMethod
+	public void LeavingHallPostJohnRejectPostNobleSolvedEdges() {
+		var LeavingHallNode = get(MyNodeLabels.LeavingHallPostJohnRejectPostNobleSolved.toString());
+		var leavehall = new PlayerInteraction(MyChoiceLabels.LeaveHall.toString(), greatHallDoor, Icons.exit, "Leave Throne Room");
+		var hallwayoutNode = get(MyNodeLabels.HallwayoutPostJohnRejectPostNobleSolved.toString());
+		LeavingHallNode.add(new Edge(leavehall, hallwayoutNode));
+	}
+	@BuilderMethod
+	public void LeavingHallPostJohnAcceptPostNobleTyrantEdges() {
+		var LeavingHallNode = get(MyNodeLabels.LeavingHallPostJohnAcceptPostNobleTyrant.toString());
+		var leavehall = new PlayerInteraction(MyChoiceLabels.LeaveHall.toString(), greatHallDoor, Icons.exit, "Leave Throne Room");
+		var hallwayoutNode = get(MyNodeLabels.HallwayoutPostJohnAcceptPostNobleTyrant.toString());
+		LeavingHallNode.add(new Edge(leavehall, hallwayoutNode));
+	}
+	@BuilderMethod
+	public void LeavingHallPostJohnRejectPostNobleTyrantEdges() {
+		var LeavingHallNode = get(MyNodeLabels.LeavingHallPostJohnRejectPostNobleTyrant.toString());
+		var leavehall = new PlayerInteraction(MyChoiceLabels.LeaveHall.toString(), greatHallDoor, Icons.exit, "Leave Throne Room");
+		var hallwayoutNode = get(MyNodeLabels.HallwayoutPostJohnRejectPostNobleTyrant.toString());
+		LeavingHallNode.add(new Edge(leavehall, hallwayoutNode));
+	}
+	@BuilderMethod
+	public void LeavingHallPostNobleSolvedPostJohnAcceptEdges() {
+		var LeavingHallNode = get(MyNodeLabels.LeavingHallPostNobleSolvedPostJohnAccept.toString());
+		var leavehall = new PlayerInteraction(MyChoiceLabels.LeaveHall.toString(), greatHallDoor, Icons.exit, "Go to Throne Room");
+		var hallwayoutNode = get(MyNodeLabels.HallwayoutPostNobleSolvedPostJohnAccept.toString());
+		LeavingHallNode.add(new Edge(leavehall, hallwayoutNode));
+	}
+	@BuilderMethod
+	public void LeavingHallPostNobleTyrantPostJohnAcceptEdges() {
+		var LeavingHallNode = get(MyNodeLabels.LeavingHallPostNobleTyrantPostJohnAccept.toString());
+		var leavehall = new PlayerInteraction(MyChoiceLabels.LeaveHall.toString(), greatHallDoor, Icons.exit, "Leave Throne Room");
+		var hallwayoutNode = get(MyNodeLabels.HallwayoutPostNobleTyrantPostJohnAccept.toString());
+		LeavingHallNode.add(new Edge(leavehall, hallwayoutNode));
+	}
+	@BuilderMethod
+	public void LeavingHallPostNobleSolvedPostJohnRejectEdges() {
+		var LeavingHallNode = get(MyNodeLabels.LeavingHallPostNobleSolvedPostJohnReject.toString());
+		var leavehall = new PlayerInteraction(MyChoiceLabels.LeaveHall.toString(), greatHallDoor, Icons.exit, "Leave Throne Room");
+		var hallwayoutNode = get(MyNodeLabels.HallwayoutPostNobleSolvedPostJohnReject.toString());
+		LeavingHallNode.add(new Edge(leavehall, hallwayoutNode));
+	}
+	@BuilderMethod
+	public void LeavingHallPostNobleTyrantPostJohnRejectEdges() {
+		var LeavingHallNode = get(MyNodeLabels.LeavingHallPostNobleTyrantPostJohnReject.toString());
+		var leavehall = new PlayerInteraction(MyChoiceLabels.LeaveHall.toString(), greatHallDoor, Icons.exit, "Leave Throne Room");
+		var hallwayoutNode = get(MyNodeLabels.HallwayoutPostNobleTyrantPostJohnReject.toString());
+		LeavingHallNode.add(new Edge(leavehall, hallwayoutNode));
+	}
+	//HallwayOut
+	@BuilderMethod
+	public void HallwayoutPostJohnAcceptPostNobleSolvedEdges() {
+		var LeavingHallNode = get(MyNodeLabels.HallwayoutPostJohnAcceptPostNobleSolved.toString());
+		var leavehallway = new PlayerInteraction(MyChoiceLabels.EnterBedroom.toString(), hallwayDoor, Icons.exit, "Enter Bedroom");
+		var BedtimeNode = get(MyNodeLabels.BedtimePostJohnAcceptPostNobleSolved.toString());
+		LeavingHallNode.add(new Edge(leavehallway, BedtimeNode));
+	}
+	@BuilderMethod
+	public void HallwayoutPostJohnRejectPostNobleSolvedEdges() {
+		var LeavingHallNode = get(MyNodeLabels.HallwayoutPostJohnRejectPostNobleSolved.toString());
+		var leavehallway = new PlayerInteraction(MyChoiceLabels.EnterBedroom.toString(), hallwayDoor, Icons.exit, "Enter Bedroom");
+		var BedtimeNode = get(MyNodeLabels.BedtimePostJohnRejectPostNobleSolved.toString());
+		LeavingHallNode.add(new Edge(leavehallway, BedtimeNode));
+	}
+	@BuilderMethod
+	public void HallwayoutPostJohnAcceptPostNobleTyrantEdges() {
+		var LeavingHallNode = get(MyNodeLabels.HallwayoutPostJohnAcceptPostNobleTyrant.toString());
+		var leavehallway = new PlayerInteraction(MyChoiceLabels.EnterBedroom.toString(), hallwayDoor, Icons.exit, "Enter Bedroom");
+		var BedtimeNode = get(MyNodeLabels.BedtimePostJohnAcceptPostNobleTyrant.toString());
+		LeavingHallNode.add(new Edge(leavehallway, BedtimeNode));
+	}
+	@BuilderMethod
+	public void HallwayoutPostJohnRejectPostNobleTyrantEdges() {
+		var LeavingHallNode = get(MyNodeLabels.HallwayoutPostJohnRejectPostNobleTyrant.toString());
+		var leavehallway = new PlayerInteraction(MyChoiceLabels.EnterBedroom.toString(), hallwayDoor, Icons.exit, "Enter Bedroom");
+		var BedtimeNode = get(MyNodeLabels.BedtimePostJohnRejectPostNobleTyrant.toString());
+		LeavingHallNode.add(new Edge(leavehallway, BedtimeNode));
+	}
+	@BuilderMethod
+	public void HallwayoutPostNobleSolvedPostJohnAcceptEdges() {
+		var LeavingHallNode = get(MyNodeLabels.HallwayoutPostNobleSolvedPostJohnAccept.toString());
+		var leavehallway = new PlayerInteraction(MyChoiceLabels.EnterBedroom.toString(), hallwayDoor, Icons.exit, "Enter Bedroom");
+		var BedtimeNode = get(MyNodeLabels.BedtimePostNobleSolvedPostJohnAccept.toString());
+		LeavingHallNode.add(new Edge(leavehallway, BedtimeNode));
+	}
+	@BuilderMethod
+	public void HallwayoutPostNobleTyrantPostJohnAcceptEdges() {
+		var LeavingHallNode = get(MyNodeLabels.HallwayoutPostNobleTyrantPostJohnAccept.toString());
+		var leavehallway = new PlayerInteraction(MyChoiceLabels.EnterBedroom.toString(), hallwayDoor, Icons.exit, "Enter Bedroom");
+		var BedtimeNode = get(MyNodeLabels.BedtimePostNobleTyrantPostJohnAccept.toString());
+		LeavingHallNode.add(new Edge(leavehallway, BedtimeNode));
+	}
+	@BuilderMethod
+	public void HallwayoutPostNobleSolvedPostJohnRejectEdges() {
+		var LeavingHallNode = get(MyNodeLabels.HallwayoutPostNobleSolvedPostJohnReject.toString());
+		var leavehallway = new PlayerInteraction(MyChoiceLabels.EnterBedroom.toString(), hallwayDoor, Icons.exit, "Enter Bedroom");
+		var BedtimeNode = get(MyNodeLabels.BedtimePostNobleSolvedPostJohnReject.toString());
+		LeavingHallNode.add(new Edge(leavehallway, BedtimeNode));
+	}
+	@BuilderMethod
+	public void HallwayoutPostNobleTyrantPostJohnRejectEdges() {
+		var LeavingHallNode = get(MyNodeLabels.HallwayoutPostNobleTyrantPostJohnReject.toString());
+		var leavehallway = new PlayerInteraction(MyChoiceLabels.EnterBedroom.toString(), hallwayDoor, Icons.exit, "Enter Bedroom");
+		var BedtimeNode = get(MyNodeLabels.BedtimePostNobleTyrantPostJohnReject.toString());
+		LeavingHallNode.add(new Edge(leavehallway, BedtimeNode));
 	}
 
 
