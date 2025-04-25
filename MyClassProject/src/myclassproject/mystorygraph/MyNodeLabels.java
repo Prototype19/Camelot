@@ -49,16 +49,10 @@ public enum MyNodeLabels{
 	HallwayoutPostNobleTyrantPostJohnAccept,
 	HallwayoutPostNobleSolvedPostJohnReject,
 	HallwayoutPostNobleTyrantPostJohnReject,
-	//Bed Scenes
-	BedtimePostJohnAcceptPostNobleSolved,
-	BedtimePostJohnRejectPostNobleSolved,
-	BedtimePostJohnAcceptPostNobleTyrant,
-	BedtimePostJohnRejectPostNobleTyrant,
-	BedtimePostNobleSolvedPostJohnAccept,
-	BedtimePostNobleTyrantPostJohnAccept,
-	BedtimePostNobleSolvedPostJohnReject,
-	BedtimePostNobleTyrantPostJohnReject,
+
 	
 	//Endings
-	PeasantRevolt,NobleCoup,SuccessfulRein
+	PeasantRevolt,NobleCoup,SuccessfulReign,
+	credits,
+	rootrepeat,
 }

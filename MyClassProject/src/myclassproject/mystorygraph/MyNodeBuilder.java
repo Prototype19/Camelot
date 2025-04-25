@@ -9,6 +9,7 @@ import com.storygraph.*;
 import com.sequences.*;
 
 import com.actions.*;
+import com.actions.SetCameraMode.Mode;
 import com.actions.utility.*;
 
 
@@ -36,7 +37,7 @@ public class MyNodeBuilder extends NodeBuilder {
 	public void rootActions() {
 		var root = get(MyNodeLabels.root.toString());
 
-		root
+		root 
 		
 		.add(new CreateAll(List.of(bedroom, greatHall,hallway,outside)))
 		.add(new CreateCharacterSequence(peasantJohn))
@@ -46,6 +47,7 @@ public class MyNodeBuilder extends NodeBuilder {
 		.add(new CreateCharacterSequence(player))
 		.add(new SetPosition(player, bedroom))
 		.add(new SetCameraFocus(player))
+		.add(new SetCredits("Project created by Daron Lebaredian"))
 		.add(new ShowMenu());
 	}
 	@BuilderMethod
@@ -124,7 +126,8 @@ public class MyNodeBuilder extends NodeBuilder {
 			var chooseAudiencePostJohnAccept = get(MyNodeLabels.ChooseAudiencePostJohnAccept.toString());
 			chooseAudiencePostJohnAccept
 			.add(new HideNarration())
-			.add(new Dance(peasantJohn));
+			.add(new Exit(peasantJohn, greatHallDoor, false))
+			.add(new SetPosition(peasantJohn));
 		}
 		@BuilderMethod
 				public void nobleQuarrelDialogPostJohnAcceptActions() {
@@ -166,7 +169,10 @@ public class MyNodeBuilder extends NodeBuilder {
 				public void chooseAudiencePostJohnRejectActions() {
 			var chooseAudiencePostJohnReject = get(MyNodeLabels.ChooseAudiencePostJohnReject.toString());
 			chooseAudiencePostJohnReject
-			.add(new HideNarration());
+			.add(new HideNarration())
+			.add(new Exit(peasantJohn, greatHallDoor, false))
+			.add(new SetPosition(peasantJohn));
+			
 		}
 		@BuilderMethod
 				public void nobleQuarrelDialogPostJohnRejectActions() {
@@ -221,7 +227,8 @@ NobleQuarrelTyrant
 			var chooseAudiencePostNobleSolved = get(MyNodeLabels.ChooseAudiencePostNobleSolved.toString());
 			chooseAudiencePostNobleSolved
 			.add(new HideNarration())
-			.add(new Dance(noble1));
+			.add(new Exit(noble1, greatHallDoor, false))
+			.add(new SetPosition(noble1));
 		}
 		@BuilderMethod
 				public void johnDialongActionsPostNobleSolvedActions() {
@@ -264,7 +271,9 @@ NobleQuarrelTyrant
 				public void chooseAudiencePostNobleTyrant() {
 			var chooseAudiencePostNobleTyrant = get(MyNodeLabels.ChooseAudiencePostNobleTyrant.toString());
 			chooseAudiencePostNobleTyrant
-			.add(new HideNarration());
+			.add(new HideNarration())
+			.add(new Exit(noble1, greatHallDoor, false))
+			.add(new SetPosition(noble1));
 		}
 		@BuilderMethod
 				public void johnDialongActionsPostNobleTyrant() {
@@ -302,14 +311,17 @@ NobleQuarrelTyrant
 		
 		LeavingHallPostJohnAcceptPostNobleSolved
 		.add(new HideNarration())
-		.add(new Dance(peasantJohn));
+		.add(new Exit(peasantJohn, greatHallDoor, false))
+		.add(new SetPosition(peasantJohn));
 	}
 	@BuilderMethod
 	public void LeavingHallPostJohnRejectPostNobleSolvedActions() {
 		var LeavingHallPostJohnRejectPostNobleSolved = get(MyNodeLabels.LeavingHallPostJohnRejectPostNobleSolved.toString());
 		
 		LeavingHallPostJohnRejectPostNobleSolved
-		.add(new HideNarration());
+		.add(new HideNarration())
+		.add(new Exit(peasantJohn, greatHallDoor, false))
+		.add(new SetPosition(peasantJohn));
 	}
 	@BuilderMethod
 	public void LeavingHallPostJohnAcceptPostNobleTyrantActions() {
@@ -317,14 +329,17 @@ NobleQuarrelTyrant
 		
 		LeavingHallPostJohnAcceptPostNobleTyrant
 		.add(new HideNarration())
-		.add(new Dance(peasantJohn));
+		.add(new Exit(peasantJohn, greatHallDoor, false))
+		.add(new SetPosition(peasantJohn));
 	}
 	@BuilderMethod
 	public void LeavingHallPostJohnRejectPostNobleTyrantActions() {
 		var LeavingHallPostJohnRejectPostNobleTyrant = get(MyNodeLabels.LeavingHallPostJohnRejectPostNobleTyrant.toString());
 		
 		LeavingHallPostJohnRejectPostNobleTyrant
-		.add(new HideNarration());
+		.add(new HideNarration())
+		.add(new Exit(peasantJohn, greatHallDoor, false))
+		.add(new SetPosition(peasantJohn));
 	}
 	@BuilderMethod
 	public void LeavingHallPostNobleSolvedPostJohnAcceptActions() {
@@ -332,14 +347,17 @@ NobleQuarrelTyrant
 		
 		LeavingHallPostNobleSolvedPostJohnAccept
 		.add(new HideNarration())
-		.add(new Dance(noble1));
+		.add(new Exit(noble1, greatHallDoor, false))
+		.add(new SetPosition(noble1));
 	}
 	@BuilderMethod
 	public void LeavingHallPostNobleTyrantPostJohnAcceptActions() {
 		var LeavingHallPostNobleTyrantPostJohnAccept = get(MyNodeLabels.LeavingHallPostNobleTyrantPostJohnAccept.toString());
 		
 		LeavingHallPostNobleTyrantPostJohnAccept
-		.add(new HideNarration());
+		.add(new HideNarration())
+		.add(new Exit(noble1, greatHallDoor, false))
+		.add(new SetPosition(noble1));
 	}
 	@BuilderMethod
 	public void LeavingHallPostNobleSolvedPostJohnRejectActions() {
@@ -347,14 +365,17 @@ NobleQuarrelTyrant
 		
 		LeavingHallPostNobleSolvedPostJohnReject
 		.add(new HideNarration())
-		.add(new Dance(noble1));
+		.add(new Exit(noble1, greatHallDoor, false))
+		.add(new SetPosition(noble1));
 	}
 	@BuilderMethod
 	public void LeavingHallPostNobleTyrantPostJohnRejectActions() {
 		var LeavingHallPostNobleTyrantPostJohnReject = get(MyNodeLabels.LeavingHallPostNobleTyrantPostJohnReject.toString());
 		
 		LeavingHallPostNobleTyrantPostJohnReject
-		.add(new HideNarration());
+		.add(new HideNarration())
+		.add(new Exit(noble1, greatHallDoor, false))
+		.add(new SetPosition(noble1));
 	}
 
 
@@ -438,87 +459,7 @@ NobleQuarrelTyrant
 		.add(new Enter(player, hallwayBackDoor, true))
 		.add(new EnableInput());
 	}
-	//Bedtime
-	@BuilderMethod
-	public void BedtimePostJohnAcceptPostNobleSolvedActions() {
-		var bedtime = get(MyNodeLabels.BedtimePostJohnAcceptPostNobleSolved.toString());
-		
-		bedtime
-		.add(new DisableInput())
-		.add(new Exit(player, hallwayBackDoor, true))
-		.add(new Enter(player, bedroomDoor, true))
-		.add(new EnableInput());
-	}
-	@BuilderMethod
-	public void BedtimePostJohnRejectPostNobleSolvedActions() {
-		var bedtime = get(MyNodeLabels.BedtimePostJohnRejectPostNobleSolved.toString());
-		
-		bedtime
-		.add(new DisableInput())
-		.add(new Exit(player, hallwayBackDoor, true))
-		.add(new Enter(player, bedroomDoor, true))
-		.add(new EnableInput());
-	}
-	@BuilderMethod
-	public void BedtimePostJohnAcceptPostNobleTyrantActions() {
-		var bedtime = get(MyNodeLabels.BedtimePostJohnAcceptPostNobleTyrant.toString());
-		
-		bedtime
-		.add(new DisableInput())
-		.add(new Exit(player, hallwayBackDoor, true))
-		.add(new Enter(player, bedroomDoor, true))
-		.add(new EnableInput());
-	}
-	@BuilderMethod
-	public void BedtimePostJohnRejectPostNobleTyrantActions() {
-		var bedtime = get(MyNodeLabels.BedtimePostJohnRejectPostNobleTyrant.toString());
-		
-		bedtime
-		.add(new DisableInput())
-		.add(new Exit(player, hallwayBackDoor, true))
-		.add(new Enter(player, bedroomDoor, true))
-		.add(new EnableInput());
-	}
-	@BuilderMethod
-	public void BedtimePostNobleSolvedPostJohnAcceptActions() {
-		var bedtime = get(MyNodeLabels.BedtimePostNobleSolvedPostJohnAccept.toString());
-		
-		bedtime
-		.add(new DisableInput())
-		.add(new Exit(player, hallwayBackDoor, true))
-		.add(new Enter(player, bedroomDoor, true))
-		.add(new EnableInput());
-	}
-	@BuilderMethod
-	public void BedtimePostNobleTyrantPostJohnAcceptActions() {
-		var bedtime = get(MyNodeLabels.BedtimePostNobleSolvedPostJohnAccept.toString());
-		
-		bedtime
-		.add(new DisableInput())
-		.add(new Exit(player, hallwayBackDoor, true))
-		.add(new Enter(player, bedroomDoor, true))
-		.add(new EnableInput());
-	}
-	@BuilderMethod
-	public void BedtimePostNobleSolvedPostJohnRejectActions() {
-		var bedtime = get(MyNodeLabels.BedtimePostNobleSolvedPostJohnReject.toString());
-		
-		bedtime
-		.add(new DisableInput())
-		.add(new Exit(player, hallwayBackDoor, true))
-		.add(new Enter(player, bedroomDoor, true))
-		.add(new EnableInput());
-	}
-	@BuilderMethod
-	public void BedtimePostNobleTyrantPostJohnRejectActions() {
-		var bedtime = get(MyNodeLabels.BedtimePostNobleTyrantPostJohnReject.toString());
-		
-		bedtime
-		.add(new DisableInput())
-		.add(new Exit(player, hallwayBackDoor, true))
-		.add(new Enter(player, bedroomDoor, true))
-		.add(new EnableInput());
-	}
+	
 	
 	
 	
@@ -527,20 +468,26 @@ NobleQuarrelTyrant
 		var PeasantRevolt = get(MyNodeLabels.PeasantRevolt.toString());
 		PeasantRevolt
 		.add(new DisableInput())
-		.add(new CreateCharacterSequence(peasant1))
-		.add(new SetPosition(peasant1, bedroom, "Door"))
-		.add(new CreateCharacterSequence(peasant2))
-		.add(new SetPosition(peasant2, bedroom, "Door"))
-		//.add(new Draw(peasant1, torch))
-		//.add(new Draw(peasant2, hammer))
-		.add(new Exit(peasant1, bedroomDoor, true))
-		.add(new Exit(peasant2, bedroomDoor, true))
-		.add(new Enter(peasant1, greatHallDoor, true))
-		.add(new Enter(peasant2, greatHallDoor, true))
-		.add(new Attack(peasant1, player, true))
-		//.add(new Attack(peasant2, player, true))
-		.add(new Die(player))
-		.add(new FadeOut());
+		.add(new Exit(player, hallwayBackDoor, true))
+		.add(new Enter(player, bedroomDoor, true))
+		.add(new Sleep(player,bed))
+		.add(new FadeOut())
+		.add(new PlaySound("Attack1"))
+		.add(new Wait(1))
+		.add(new PlaySound("Attack2"))
+		.add(new Wait(1))
+		.add(new PlaySound("Attack1"))
+		.add(new Wait(1))
+		.add(new PlaySound("CloseDoor2"))
+		.add(new Wait(1))
+		.add(new PlaySound("Scream"))
+		.add(new Wait(3))
+		.add(new PlaySound("Attack1"))
+		.add(new Wait(1))
+		.add(new PlaySound("Death1"))
+		.add(new Wait(2))
+		.add(new NarrationSequence("Ending 1/3: Peasant Revolt"));
+
 	}
 	
 	
@@ -549,14 +496,62 @@ NobleQuarrelTyrant
 	public void NobleCoupActions() {
 		var NobleCoup = get(MyNodeLabels.NobleCoup.toString());
 		NobleCoup
-		.add(new SetNarration("NobleCoup"));
+		.add(new DisableInput())
+		.add(new Exit(player, hallwayBackDoor, true))
+		.add(new Enter(player, bedroomDoor, true))
+		.add(new Sleep(player,bed))
+		.add(new FadeOut())
+		.add(new PlaySound("Unlock"))
+		.add(new Wait(1))
+		.add(new PlaySound("OpenDoor1"))
+		.add(new Wait(1))
+		.add(new PlaySound("Sheathe"))
+		.add(new Wait(1))
+		.add(new PlaySound("Death1"))
+		.add(new Wait(2))
+		.add(new PlaySound("EvilLaugh2"))
+		.add(new Wait(3))
+		.add(new NarrationSequence("Ending 2/3: Noble Coup"));
+
 	}
 	@BuilderMethod
 	public void SuccessfulReinActions() {
-		var NobleCoup = get(MyNodeLabels.SuccessfulRein.toString());
+		var NobleCoup = get(MyNodeLabels.SuccessfulReign.toString());
 		NobleCoup
-		.add(new SetNarration("SuccessfulRein"));
+		.add(new DisableInput())
+		.add(new Exit(player, hallwayBackDoor, true))
+		.add(new Enter(player, bedroomDoor, true))
+		.add(new Sleep(player,bed))
+		.add(new FadeOut())
+		.add(new SetPosition(player,greatHall,"Throne"))
+		.add(new SetCameraMode(Mode.track))
+		.add(new FadeIn())
+		.add(new Dance(player))
+		.add(new FadeOut())
+		.add(new NarrationSequence("Ending 3/3: Successful Reign"));
 	}
+	
+	@BuilderMethod
+	public void rootrepeatActions() {
+		var root = get(MyNodeLabels.rootrepeat.toString());
+
+		root
+		.add(new HideNarration())
+		.add(new HideCredits())
+		.add(new SetPosition(peasantJohn, greatHall, "LeftFoyer"))
+		.add(new SetPosition(noble1, greatHall, "RightFoyer"))
+		.add(new SetPosition(player, bedroom))
+		.add(new SetCameraFocus(player))
+		.add(new SetCameraMode(Mode.follow))
+		.add(new ShowMenu())
+		.add(new FadeIn());
+	}
+	public void creditsActions() {
+		var creditsNode = get(MyNodeLabels.credits.toString());
+		creditsNode
+		.add(new ShowCredits());
+	}
+
 	
 	
 	
