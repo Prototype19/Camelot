@@ -47,7 +47,8 @@ public class MyNodeBuilder extends NodeBuilder {
 		.add(new CreateCharacterSequence(player))
 		.add(new SetPosition(player, bedroom))
 		.add(new SetCameraFocus(player))
-		.add(new SetCredits("Project created by Daron Lebaredian"))
+		.add(new SetTitle("The Young King"))
+		.add(new SetCredits("The Young King was programmed and developed by Daron Lebaredian on 2025."))
 		.add(new ShowMenu());
 	}
 	@BuilderMethod
@@ -103,6 +104,7 @@ public class MyNodeBuilder extends NodeBuilder {
 			var johnDialong = get(MyNodeLabels.JohnDialog.toString());
 			
 			johnDialong
+			.add(new LookAt(peasantJohn ,player))
 			.add(new DialogSequence(player, peasantJohn, List.of("My lord! my region's grain storehouse is beginning to fall apart. "
 					+ "I beg of you on behalf of my fellow commoners, "
 					+ "please fund the construction of a new storehouse. "
@@ -134,6 +136,7 @@ public class MyNodeBuilder extends NodeBuilder {
 			var nobleQuarrelDialog = get(MyNodeLabels.NobleQuarrelPostJohnAccept.toString());
 			
 			nobleQuarrelDialog
+			.add(new LookAt(noble1 ,player))
 			.add(new DialogSequence(player, noble1, List.of("My liege! me and my peer have been quarreling over the borders of our newly inherited lands. Particularly there's one village whose ownership is 'vague'. Me and the fellow noble petition for you to resolve this issue."),
 					List.of("The village's rent will be split equally between you two.", "I will take the village for myself!")));
 		}
@@ -206,6 +209,7 @@ NobleQuarrelTyrant
 			var nobleQuarrelDialog = get(MyNodeLabels.NobleQuarrelDialog.toString());
 			
 			nobleQuarrelDialog
+			.add(new LookAt(noble1 ,player))
 			.add(new DialogSequence(player, noble1, List.of("My liege! me and my peer have been quarreling over the borders of our newly inherited lands. Particularly there's one village whose ownership is 'vague'. Me and the fellow noble petition for you to resolve this issue."),
 					List.of("The village's rent will be split equally between you two.", "I will take the village for myself!")));
 		}
@@ -235,6 +239,7 @@ NobleQuarrelTyrant
 			var johnDialong = get(MyNodeLabels.JohnDialogPostNobleSolved.toString());
 			
 			johnDialong
+			.add(new LookAt(peasantJohn ,player))
 			.add(new DialogSequence(player, peasantJohn, List.of("My lord! my region's grain storehouse is beginning to fall apart. I beg of you on behalf of my fellow commoners, please fund the construction of a new storehouse. Otherwise we risk all of our grain to rot and starving in the winter."),
 					List.of("I will!", "I refuse!")));
 		}
@@ -280,6 +285,7 @@ NobleQuarrelTyrant
 			var johnDialong = get(MyNodeLabels.JohnDialogPostNobleTyrant.toString());
 			
 			johnDialong
+			.add(new LookAt(peasantJohn ,player))
 			.add(new DialogSequence(player, peasantJohn, List.of("My lord! my region's grain storehouse is beginning to fall apart. I beg of you on behalf of my fellow commoners, please fund the construction of a new storehouse. Otherwise we risk all of our grain to rot and starving in the winter."),
 					List.of("I will!", "I refuse!")));
 		}
@@ -549,7 +555,9 @@ NobleQuarrelTyrant
 	public void creditsActions() {
 		var creditsNode = get(MyNodeLabels.credits.toString());
 		creditsNode
-		.add(new ShowCredits());
+		
+		.add(new ShowCredits())
+		.add(new HideMenu());
 	}
 
 	

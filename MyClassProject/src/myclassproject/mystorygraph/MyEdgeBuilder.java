@@ -51,8 +51,10 @@ public class MyEdgeBuilder extends NodeBuilder {
 		var rootrepeat = get(MyNodeLabels.rootrepeat.toString());
 		var startChoice = new MenuChoice(MenuChoice.Options.Resume);
 		var creditsChoice = new MenuChoice(MenuChoice.Options.Credits);
+		var quitChoice = new MenuChoice(MenuChoice.Options.Quit);
 		var intro = get(MyNodeLabels.intro.toString());
 		var creditsNode = get(MyNodeLabels.credits.toString());
+
 		rootrepeat.add(new Edge(startChoice, intro));
 		rootrepeat.add(new Edge(creditsChoice, creditsNode));
 		
